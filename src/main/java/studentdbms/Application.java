@@ -11,7 +11,7 @@ import studentdbms.service.CourseService;
 import studentdbms.service.StudentService;
 
 @SpringBootApplication
-public class StudentDBMSApplication implements CommandLineRunner
+public class Application implements CommandLineRunner
 {
 	@Autowired
 	private StudentService studentService;
@@ -20,7 +20,7 @@ public class StudentDBMSApplication implements CommandLineRunner
 	private CourseService courseService;
 
 	public static void main(String[] args) {
-		SpringApplication.run(StudentDBMSApplication.class, args);
+		SpringApplication.run(Application.class, args);
 	}
 
 	@Override
