@@ -19,8 +19,10 @@ public class Course
 	@GeneratedValue
 	private int id;
 	
-	@Column(unique = true)
+	@Column
 	private String name;
+	// @Column(unique = true)
+	// private String name;
 	
 	@OneToMany(mappedBy = "course")
 	@JsonIgnore
