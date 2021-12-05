@@ -11,6 +11,12 @@
       integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
       crossorigin="anonymous"
     />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=MuseoModerno:wght@100&display=swap"
+      rel="stylesheet"
+    />
     <style>
       body {
         background-image: url("https://images.unsplash.com/photo-1523821741446-edb2b68bb7a0?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80");
@@ -22,7 +28,7 @@
       }
       .navbar-brand {
         font-size: 40px;
-        font-family: Georgia, "Times New Roman", Times, serif;
+        font-family: MuseoModerno;
         color: whitesmoke;
       }
       .container {
@@ -30,6 +36,11 @@
       }
       a {
         color: whitesmoke !important;
+        font-size: 20px;
+      }
+      .btn {
+        background-color: #fff;
+        color: black;
         font-size: 20px;
       }
     </style>
@@ -57,17 +68,25 @@
 
       <div class="container hero">
         <div class="col-12" style="width: 400px; margin-top: 80px">
-          <h1>Business goal designs</h1>
+          <h1>Welcome to Vaquita!</h1>
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat.<br />
+            The official web page of Vaquita,a personalized event management
+            system developed by a group of aspiring CS undergrads.<br />
           </p>
-          <button class="btn btn-light btn-lg action-button" type="button" onclick="location.href='signup.html'">
+          <button
+            class="btn btn-light btn-lg action-button signup"
+            type="button"
+            onclick="location.href='signup.html'"
+          >
             Sign Up <i class="fa fa-long-arrow-right ml-2"></i>
           </button>
-          <button class="btn btn-light btn-lg action-button" type="button" id="signin" onclick="location.href='login.html'" style="margin-left: 10px;">
+          <button
+            class="btn btn-light btn-lg action-button"
+            type="button"
+            id="signin"
+            onclick="location.href='login.html'"
+            style="margin-left: 10px"
+          >
             Sign In <i class="fa fa-long-arrow-right ml-2"></i>
           </button>
         </div>

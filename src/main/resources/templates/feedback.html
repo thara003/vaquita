@@ -11,6 +11,12 @@
       integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
       crossorigin="anonymous"
     />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=MuseoModerno:wght@100&display=swap"
+      rel="stylesheet"
+    />
     <link
       rel="stylesheet"
       href="	https://use.fontawesome.com/releases/v5.7.2/css/all.css"
@@ -50,7 +56,7 @@
     >
       <div class="row">
         <div class="col-3" style="text-align: left !important">
-          <h5>Vaquita</h5>
+          <h5 style="font-family:MuseoModerno;font-weight: bold;">Vaquita</h5>
         </div>
         <div class="col-9" style="text-align: right !important">
           <h4>Your Feedback</h4>
@@ -64,7 +70,7 @@
           background-color: gray;
         "
       />
-      <p class="text-center">
+      <p class="text-center"style="font-size: large !important;">
         We would like your feedback to improve our services.
       </p>
       <div class="form-group mb-3">
@@ -79,7 +85,7 @@
           required
         />
       </div>
-      <p class="text-center">What is your opinion of our services?</p>
+      <p class="text-center" style="font-size: large !important;">What is your opinion of our services?</p>
 
       <div class="row">
         <div class="col-4 text-center">
@@ -115,7 +121,7 @@
           background-color: gray;
         "
       />
-      <p>Please select your feedback category below</p>
+      <p class="text-center">Please select your feedback category below</p>
       <div class="row">
         <div class="col-sm-4">
           <div
@@ -164,9 +170,10 @@
         "
       />
       <div class="mb-3">
-        <label for="exampleFormControlTextarea1" class="form-label"
+        <!-- <label for="exampleFormControlTextarea1" class="form-label" style="text-align: center;"
           >Please leave your feedback below.</label
-        >
+        > -->
+        <p class="text-center">Please leave your feedback below.</p>
         <textarea
           class="form-control"
           id="exampleFormControlTextarea1"
@@ -192,7 +199,7 @@
               <i class="fas fa-check-circle fa-3x" style="color: greenyellow;"></i>
               
               <h5 class="modal-body" id="exampleModalLongTitle" style="color:black">
-                Succsessful!
+                Feedback Submitted
               </h5>
               
             </div>

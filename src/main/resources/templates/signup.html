@@ -33,14 +33,16 @@
   <body>
     <div class="container p-4" style="width: 500px">
       <h4 class="text-center">Register</h4>
-      <form onSubmit="alert('Succsessfuly Registered. Please navigate to home page for login');">
+      <form
+        onSubmit="alert('Succsessfuly Registered. Please navigate to home page for login');"
+      >
         <div class="form-group mb-3">
           <label for="exampleFormControlInput1 validationServer01"
             >Enter Your Name
           </label>
           <input
             type="text"
-            class="form-control is-valid"
+            class="form-control"
             id="exampleFormControlInput1 validationServer01"
             placeholder="name"
             required
@@ -52,9 +54,10 @@
           </label>
           <input
             type="tel"
-            class="form-control is-valid"
+            maxlength="10"
+            class="form-control"
             id="exampleFormControlInput1"
-            placeholder="+91"
+            placeholder="mobile number"
             required
           />
         </div>
@@ -64,14 +67,13 @@
           >
           <input
             type="email"
-            class="form-control is-valid"
+            class="form-control"
             id="exampleFormControlInput1"
             placeholder="name@example.com"
             required
           />
         </div>
 
-        
         <div class="mb-3">
           <label class="form-label" for="inputEmail">Username</label>
           <input
@@ -89,10 +91,9 @@
             class="form-control"
             id="inputpassword"
             placeholder="Password"
-            onkeyup='check();'
+            onkeyup="check();"
             required
           />
-          
         </div>
         <div class="mb-3">
           <label class="form-label" for="inputPassword">Confirm Password</label>
@@ -101,7 +102,7 @@
             class="form-control"
             id="confirmpassword"
             placeholder="Confirm Password"
-            onkeyup='check();'
+            onkeyup="check();"
             required
           />
           <span id="message"></span>
