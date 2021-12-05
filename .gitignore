@@ -71,3 +71,4 @@ target
 .flattened-pom.xml
 secrets.yml
 .gradletasknamecache
+application.properties

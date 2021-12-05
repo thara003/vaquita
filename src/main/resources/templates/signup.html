@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sign Up</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+      crossorigin="anonymous"
+    />
+
+    <style>
+      body {
+        background-image: url("https://images.unsplash.com/photo-1523821741446-edb2b68bb7a0?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80");
+        background-color: #cccccc;
+        background-size: cover;
+        color: whitesmoke;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: 100% 100%;
+        overflow-y: scroll;
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+      }
+      ::-webkit-scrollbar {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container p-4" style="width: 500px">
+      <h4 class="text-center">Register</h4>
+      <form onSubmit="alert('Succsessfuly Registered. Please navigate to home page for login');">
+        <div class="form-group mb-3">
+          <label for="exampleFormControlInput1 validationServer01"
+            >Enter Your Name
+          </label>
+          <input
+            type="text"
+            class="form-control is-valid"
+            id="exampleFormControlInput1 validationServer01"
+            placeholder="name"
+            required
+          />
+        </div>
+        <div class="form-group mb-3">
+          <label for="exampleFormControlInput1 validationServer02"
+            >Phone Number
+          </label>
+          <input
+            type="tel"
+            class="form-control is-valid"
+            id="exampleFormControlInput1"
+            placeholder="+91"
+            required
+          />
+        </div>
+        <div class="form-group mb-3">
+          <label for="exampleFormControlInput1 validationServer03"
+            >Email address</label
+          >
+          <input
+            type="email"
+            class="form-control is-valid"
+            id="exampleFormControlInput1"
+            placeholder="name@example.com"
+            required
+          />
+        </div>
+
+        
+        <div class="mb-3">
+          <label class="form-label" for="inputEmail">Username</label>
+          <input
+            type="text"
+            class="form-control"
+            id="inputEmail"
+            placeholder="Username"
+            required
+          />
+        </div>
+        <div class="mb-3">
+          <label class="form-label" for="inputPassword">Password</label>
+          <input
+            type="password"
+            class="form-control"
+            id="inputpassword"
+            placeholder="Password"
+            onkeyup='check();'
+            required
+          />
+          
+        </div>
+        <div class="mb-3">
+          <label class="form-label" for="inputPassword">Confirm Password</label>
+          <input
+            type="password"
+            class="form-control"
+            id="confirmpassword"
+            placeholder="Confirm Password"
+            onkeyup='check();'
+            required
+          />
+          <span id="message"></span>
+        </div>
+        <a href="index.html" class="btn btn-danger">Back</a>
+        <button
+          type="submit"
+          class="btn btn-primary"
+          data-toggle="modal"
+          data-target="#exampleModalCenter"
+        >
+          Submit
+        </button>
+        <div
+          class="modal fade"
+          id="exampleModalCenter"
+          tabindex="-1"
+          role="dialog"
+          aria-labelledby="exampleModalCenterTitle"
+          aria-hidden="true"
+        >
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <i
+                  class="fas fa-check-circle fa-3x"
+                  style="color: greenyellow"
+                ></i>
+
+                <h5
+                  class="modal-body"
+                  id="exampleModalLongTitle"
+                  style="color: black"
+                >
+                  Succsessful!
+                </h5>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+    <script>
+      var check = function () {
+        if (
+          document.getElementById("inputpassword").value ==
+          document.getElementById("confirmpassword").value
+        ) {
+          document.getElementById("message").style.color = "green";
+          document.getElementById("message").innerHTML = "matching";
+        } else {
+          document.getElementById("message").style.color = "red";
+          document.getElementById("message").innerHTML = "not matching";
+        }
+      };
+    </script>
+  </body>
+</html>
