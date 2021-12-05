@@ -30,7 +30,8 @@
         <div class="form-group mb-3">
             <label for="exampleFormControlSelect1">Credit Card Number</label>
             <input
-              type="number"
+              type="text"
+              maxlength="16"
               class="form-control"
               id="exampleFormControlInput1"
               placeholder="Card number"
@@ -39,7 +40,8 @@
           <div class="form-group mb-3">
             <label for="exampleFormControlInput1">CVV </label>
             <input
-              type="number"
+              type="text"
+              maxlength="3"
               class="form-control"
               id="exampleFormControlInput1"
               placeholder="CVV"
@@ -62,7 +64,7 @@
             </label>
             <input
               type="text"
-              class="form-control is-invalid"
+              class="form-control "
               id="exampleFormControlInput1 validationServer01"
               placeholder="address line-1"
             />
@@ -72,7 +74,7 @@
               <label for="validationServer04">City</label>
               <input
                 type="text"
-                class="form-control is-invalid"
+                class="form-control "
                 id="validationServer03"
                 placeholder="City"
                 required
@@ -83,7 +85,8 @@
               <label for="validationServer05">Zip</label>
               <input
                 type="text"
-                class="form-control is-invalid"
+                maxlength="6"
+                class="form-control "
                 id="validationServer05"
                 placeholder="Zip"
                 required
@@ -92,7 +95,8 @@
             </div>
           </div>
           <a href="client.html" class="btn btn-danger">Back</a>
-          <button type="submit" class="btn btn-primary">Submit</button>
+          <a href="client.html" class="btn btn-primary">Submit</a>
+          <!-- <button type="submit" class="btn btn-primary">Submit</button> -->
           
       </form>
     </div>
