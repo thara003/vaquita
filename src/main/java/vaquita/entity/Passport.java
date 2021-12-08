@@ -1,4 +1,4 @@
-package Vaquita.entity;
+package vaquita.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

@@ -1,4 +1,4 @@
-package Vaquita.controller;
+package vaquita.controller;
 
 import java.util.List;
 
@@ -11,9 +11,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import Vaquita.entity.Course;
-import Vaquita.entity.Review;
-import Vaquita.service.CourseService;
+import vaquita.entity.Course;
+import vaquita.entity.Review;
+import vaquita.service.CourseService;
 
 @Controller
 @RequestMapping("/courses")

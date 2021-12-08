@@ -1,4 +1,4 @@
-package Vaquita.controller;
+package vaquita.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -9,10 +9,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import Vaquita.entity.Course;
-import Vaquita.entity.Review;
-import Vaquita.service.CourseService;
-import Vaquita.service.ReviewService;
+import vaquita.entity.Course;
+import vaquita.entity.Review;
+import vaquita.service.CourseService;
+import vaquita.service.ReviewService;
 
 @Controller
 @RequestMapping("/reviews")

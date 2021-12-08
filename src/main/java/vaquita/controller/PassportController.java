@@ -1,4 +1,4 @@
-package Vaquita.controller;
+package vaquita.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -9,10 +9,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import Vaquita.entity.Passport;
-import Vaquita.entity.Student;
-import Vaquita.service.PassportService;
-import Vaquita.service.StudentService;
+import vaquita.entity.Passport;
+import vaquita.entity.Student;
+import vaquita.service.PassportService;
+import vaquita.service.StudentService;
 
 @Controller
 @RequestMapping("/passports")

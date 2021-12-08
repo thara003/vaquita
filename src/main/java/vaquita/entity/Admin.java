@@ -1,34 +1,27 @@
-package Vaquita.entity;
-
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+package vaquita.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
-import javax.persistence.OneToMany;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 @Entity
 public class Admin {
     @Id
-    private Integer admin_id;
+    private Long admin_id;
 
     @Column
     private String admin_password;
 
     public Admin(){}
-    public Admin(Integer admin_id) {
+    public Admin(Long admin_id,String admin_password) {
         this.admin_id = admin_id;
+        this.admin_password =admin_password;
     }
-    public Integer getAdmin_id() {
+    public Long getAdmin_id() {
         return admin_id;
     }
 
-    public void setAdmin_id(Integer admin_id) {
+    public void setAdmin_id(Long admin_id) {
         this.admin_id = admin_id;
     }
 

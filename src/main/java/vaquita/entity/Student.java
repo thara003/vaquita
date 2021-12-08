@@ -1,4 +1,4 @@
-package Vaquita.entity;
+package vaquita.entity;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,31 +1,25 @@
-package Vaquita.entity;
+package vaquita.entity;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.ManyToMany;
-import javax.persistence.OneToMany;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import javax.persistence.*;
 
 @Entity
 public class Client {
 
     @Id
     @GeneratedValue
-    private int c_id;
+    private Long c_id;
     @Column
     private String c_name;
     @Column
     private String c_mail;
-    @Column
-    private Integer c_contact;
+    @Column(length = 10)
+    private Long c_contact;
     @Column
     private String c_address;
+    @Column
+    private String c_city;
+    @Column(length = 6)
+    private Integer c_zip;
     @Column
     private String c_username;
     @Column
@@ -34,9 +28,18 @@ public class Client {
 
     public Client() {}
 
-    public Client(String c_name) {
+    public Client(String c_name,String c_mail,Long c_contact,String c_address,String c_city,Integer c_zip,String c_username,String c_password) {
         this.c_name = c_name;
+        this.c_contact = c_contact;
+        this.c_mail = c_mail;
+        this.c_address = c_address;
+        this.c_city = c_city;
+        this.c_zip = c_zip;
+        this.c_username = c_username;
+        this.c_password = c_password;
+
     }
+
 
     public String getName() {
         return c_name;
@@ -46,7 +49,7 @@ public class Client {
         this.c_name = c_name;
     }
 
-    public int getId() {
+    public Long getId() {
         return c_id;
     }
 
@@ -58,11 +61,11 @@ public class Client {
         this.c_mail = c_mail;
     }
 
-    public Integer getContact() {
+    public Long getContact() {
         return c_contact;
     }
 
-    public void setContact(Integer c_contact) {
+    public void setContact(Long c_contact) {
         this.c_contact = c_contact;
     }
 
@@ -72,6 +75,22 @@ public class Client {
 
     public void setAddress(String c_address) {
         this.c_address = c_address;
+    }
+
+    public String getCity() {
+        return c_city;
+    }
+
+    public void setCity(String c_city) {
+        this.c_city = c_city;
+    }
+
+    public Integer getZip() {
+        return c_zip;
+    }
+
+    public void setZip(Integer c_Zip) {
+        this.c_zip = c_Zip;
     }
 
     public String getUser() {
@@ -91,7 +110,7 @@ public class Client {
 
     @Override
     public String toString() {
-        return "client [c_id=" + c_id + ", c_name=" + c_name + ", c_mail=" + c_mail + ",c_contact=" + c_contact + ",c_address=" + c_address + ",c_username=" + c_username + ",c_password=" + c_password + "]";
+        return "client [c_id=" + c_id + ", c_name=" + c_name + ", c_mail=" + c_mail + ",c_contact=" + c_contact + ",c_address=" +c_contact + ",c_address="+ c_address+",c_city="+ c_city+",c_zip="+ c_zip + ",c_username=" + c_username + ",c_password=" + c_password + "]";
     }
 
 }
