@@ -1,14 +1,14 @@
-package studentdbms;
+package Vaquita;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import studentdbms.entity.Course;
-import studentdbms.entity.Student;
-import studentdbms.service.CourseService;
-import studentdbms.service.StudentService;
+import Vaquita.entity.Course;
+import Vaquita.entity.Student;
+import Vaquita.service.CourseService;
+import Vaquita.service.StudentService;
 
 @SpringBootApplication
 public class Application implements CommandLineRunner

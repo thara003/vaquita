@@ -1,11 +1,11 @@
-package studentdbms.service;
+package Vaquita.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import studentdbms.entity.Review;
-import studentdbms.repository.ReviewRepository;
+import Vaquita.entity.Review;
+import Vaquita.repository.ReviewRepository;
 
 @Service
 public class ReviewService 

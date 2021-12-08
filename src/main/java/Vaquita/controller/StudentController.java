@@ -1,4 +1,4 @@
-package studentdbms.controller;
+package Vaquita.controller;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,10 +13,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import studentdbms.entity.Course;
-import studentdbms.entity.Student;
-import studentdbms.service.CourseService;
-import studentdbms.service.StudentService;
+import Vaquita.entity.Course;
+import Vaquita.entity.Student;
+import Vaquita.service.CourseService;
+import Vaquita.service.StudentService;
 
 @Controller
 @RequestMapping("/students")

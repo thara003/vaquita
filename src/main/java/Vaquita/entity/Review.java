@@ -1,4 +1,4 @@
-package studentdbms.entity;
+package Vaquita.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

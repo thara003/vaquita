@@ -1,4 +1,4 @@
-package studentdbms.service;
+package Vaquita.service;
 
 import java.util.List;
 
@@ -6,8 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import studentdbms.entity.Student;
-import studentdbms.repository.StudentRepository;
+import Vaquita.entity.Student;
+import Vaquita.repository.StudentRepository;
 
 @Service
 public class StudentService
