@@ -82,17 +82,17 @@ review-form.html
 student-form.html
 student-list.html
 
-Course
-Passport
-Review
-Student
+Course.java
+Passport.java
+Review.java
+Student.java
 
-CourseRepository
-PassportRepository
-ReviewRepository
-StudentRepository
+CourseRepository.java
+PassportRepository.java
+ReviewRepository.java
+StudentRepository.java
 
-CourseService
-PassportService
-ReviewService
-StudentService
+CourseService.java
+PassportService.java
+ReviewService.java
+StudentService.java
