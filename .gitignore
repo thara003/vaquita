@@ -73,7 +73,7 @@ secrets.yml
 .gradletasknamecache
 application.properties
 
-course-details.html
+course-detail.html
 course-form.html
 course-list.html
 home.html
