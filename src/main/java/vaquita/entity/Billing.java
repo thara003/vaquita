@@ -19,11 +19,10 @@ public class Billing{
     private String paystatus;
     public Billing(){}
 
-    public Billing(Long c_id,Longevent_id,Long billno,Float amount,String paystatus) {
+    public Billing(Long c_id,Long event_id,Long billno,Float amount,String paystatus) {
         this.c_id = c_id;
         this.event_id = event_id;
         this.billno= billno;
-        this.c_address = c_address;
         this.amount=amount;
         this.paystatus=paystatus;
 
