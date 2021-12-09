@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import vaquita.entity.Client;
-import vaquita.entity.Course;
 import vaquita.repository.ClientRepository;
 
 @Service
