@@ -1,11 +1,10 @@
 package vaquita.entity;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Staff {
@@ -17,8 +16,8 @@ public class Staff {
     @Column
     private String s_name;
 
-    @Column
-    private Integer event_id;
+//    @Column
+//    private Integer event_id;
 
     @Column
     private String s_address;
@@ -35,17 +34,25 @@ public class Staff {
     @Column
     private String s_password;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "event_id")
+    private Events events;
+
+    @OneToOne(mappedBy = "staff", fetch = FetchType.LAZY, orphanRemoval = false)
+    private  Manager listProjects;
+
     public Staff(){}
 
-    public Staff (int s_id, String s_name, Integer event_id, String s_address, String field, String salary, String progress, String s_password){
-        this.s_id = s_id;
+    public Staff ( String s_name, String s_address, String field, String salary, String progress, String s_password, Events events){
+
         this.s_name = s_name;
-        this.event_id = event_id;
+//        this.event_id = event_id;
         this.s_address = s_address;
         this.field = field;
         this.salary = salary;
         this.progress = progress;
         this.s_password = s_password;
+        this.events = events;
     }
 
     public int getS_id() {
@@ -64,13 +71,13 @@ public class Staff {
         this.s_name = s_name;
     }
 
-    public Integer getEvent_id() {
-        return event_id;
-    }
-
-    public void setEvent_id(Integer event_id) {
-        this.event_id = event_id;
-    }
+//    public Integer getEvent_id() {
+//        return event_id;
+//    }
+//
+//    public void setEvent_id(Integer event_id) {
+//        this.event_id = event_id;
+//    }
 
     public String getS_address() {
         return s_address;
@@ -112,8 +119,16 @@ public class Staff {
         this.s_password = s_password;
     }
 
+    public Events getEvents() {
+        return events;
+    }
+
+    public void setEvents(Events events) {
+        this.events = events;
+    }
+
     @Override
     public String toString (){
-        return "Staff [s_id=" + s_id + ",s_name=" + s_name + ",event_id=" + event_id + "s_address=" + s_address +"field" + field + "salary=" + salary + "progress=" + progress +"s_password=" + s_password + "]";
+        return "Staff [s_id=" + s_id + ",s_name=" + s_name +  ",s_address=" + s_address +"field" + field + "salary=" + salary + "progress=" + progress +"s_password=" + s_password + "events="+events+"]";
     }
 }

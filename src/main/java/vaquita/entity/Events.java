@@ -1,11 +1,10 @@
 package vaquita.entity;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Events {
@@ -14,8 +13,6 @@ public class Events {
     @GeneratedValue
     private int event_id;
 
-    @Column
-    private int c_id;
 
     @Column
     private String event_name;
@@ -24,7 +21,7 @@ public class Events {
     private String subevent;
 
     @Column
-    private Date event_date;
+    private String event_date;
 
     @Column
     private String priority;
@@ -41,10 +38,23 @@ public class Events {
     @Column
     private String staffs;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "client_id")
+    private Client client;
+
+
+    @OneToMany(mappedBy = "events", fetch = FetchType.LAZY, orphanRemoval = false)
+    private final List<Staff> listStaff = new ArrayList<>();
+    @OneToMany(mappedBy = "events", fetch = FetchType.LAZY, orphanRemoval = false)
+    private final List<Manager> listManager = new ArrayList<>();
+    @OneToOne(mappedBy = "events", fetch = FetchType.LAZY, orphanRemoval = false)
+    private  Feedback listFeedback;
+    @OneToOne(mappedBy = "events", fetch = FetchType.LAZY, orphanRemoval = false)
+    private  Billing listBilling;
+
     public Events(){}
 
-    public Events (int c_id, String event_name, String subevent, Date event_date, String priority, String destination, String dest_city, Integer dest_zip, String staffs){
-        this.c_id = c_id;
+    public Events ( String event_name, String subevent, String event_date, String priority, String destination, String dest_city, Integer dest_zip, String staffs,Client client){
         this.event_name = event_name;
         this.subevent = subevent;
         this.event_date = event_date;
@@ -53,17 +63,12 @@ public class Events {
         this.dest_city = dest_city;
         this.dest_zip = dest_zip;
         this.staffs = staffs;
+        this.client = client;
     }
     public int getId() {
         return event_id;
     }
 
-    public int getC_id() {
-        return c_id;
-    }
-    public void setC_id(int c_id) {
-        this.c_id = c_id;
-    }
 
     public String getEvent_name() {
         return event_name;
@@ -81,11 +86,11 @@ public class Events {
         this.subevent = subevent;
     }
 
-    public Date getEvent_date() {
+    public String getEvent_date() {
         return event_date;
     }
 
-    public void setEvent_date(Date event_date) {
+    public void setEvent_date(String event_date) {
         this.event_date = event_date;
     }
 
@@ -125,8 +130,16 @@ public class Events {
         this.staffs = staffs;
     }
 
+    public Client getClient() {
+        return client;
+    }
+
+    public void setClient(Client client) {
+        this.client = client;
+    }
+
     @Override
     public String toString (){
-        return "Events [c_id=" + c_id + ",event_name=" + event_name + ",event_id=" + event_id + "subevent=" + subevent +"event_date" + event_date + "priority=" + priority + "destination=" + destination +"dest_city=" + dest_city + "dest_zip=" + dest_zip + "staffs=" + staffs +"]";
+        return "Events [event_name=" + event_name + ",event_id=" + event_id + "subevent=" + subevent +"event_date" + event_date + "priority=" + priority + "destination=" + destination +"dest_city=" + dest_city + "dest_zip=" + dest_zip + "staffs=" + staffs +"client="+client+"]";
     }
 }

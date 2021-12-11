@@ -1,30 +1,36 @@
 package vaquita.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
+
 
 @Entity
-public class Userrequest{
+public class Userrequest   {
     @Id
-
-    private Long c_id;
+    @GeneratedValue
+    private Long rqst_id;
     @Column
     private String req_status;
+
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "client_id")
+    private Client client;
+
     public Userrequest(){}
 
-    public Userrequest(Long c_id,String req_status) {
-        this.c_id = c_id;
+    public Userrequest(String req_status,Long rqst_id, Client client) {
+//        this.c_id = c_id;
         this.req_status=req_status;
+        this.client = client;
 
 
     }
     public Long getC_id() {
-        return c_id;
+        return rqst_id;
     }
 
     public void setC_id(Long c_id) {
-        this.c_id = c_id;
+        this.rqst_id = rqst_id;
     }
 
 
@@ -36,9 +42,18 @@ public class Userrequest{
     public void setReq_status(String req_status) {
         this.req_status = req_status;
     }
+
+    public Client getClient() {
+        return client;
+    }
+
+    public void setClient(Client client) {
+        this.client = client;
+    }
+
     @Override
     public String toString() {
-        return "userrequest [c_id=" + c_id + ",req_status=" +req_status + "]";
+        return "userrequest [req_status=" +req_status + "rqst_id="+rqst_id+"client="+client+"]";
     }
 
 

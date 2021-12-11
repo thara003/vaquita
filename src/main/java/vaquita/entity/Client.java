@@ -1,13 +1,20 @@
 package vaquita.entity;
 
+
+import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.*;
 
+
+
 @Entity
+
 public class Client {
 
     @Id
     @GeneratedValue
     private Long c_id;
+
     @Column
     private String c_name;
     @Column
@@ -24,6 +31,13 @@ public class Client {
     private String c_username;
     @Column
     private String c_password;
+
+    @OneToMany(mappedBy = "client", fetch = FetchType.LAZY, orphanRemoval = false)
+    private final List<Events> listEvents = new ArrayList<>();
+    @OneToMany(mappedBy = "client", fetch = FetchType.LAZY, orphanRemoval = false)
+    private final List<Userrequest> listUserrequest = new ArrayList<>();
+
+
 
 
     public Client() {}
