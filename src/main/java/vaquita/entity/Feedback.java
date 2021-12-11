@@ -6,7 +6,7 @@ import javax.persistence.*;
 public class Feedback{
     @Id
     @GeneratedValue
-    private Long feed_id;
+    private Integer feed_id;
 
 //    private Long c_id;
 //    @Column
@@ -90,7 +90,7 @@ public class Feedback{
         return events;
     }
 
-    public Long getId() {
+    public Integer getId() {
         return feed_id;
     }
 

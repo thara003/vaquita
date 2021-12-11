@@ -6,7 +6,7 @@ import javax.persistence.*;
 public class Manager {
     @Id
     @GeneratedValue
-    private Long man_id;
+    private Integer man_id;
 
 //    @Column
 //    private Long c_id;
@@ -65,7 +65,7 @@ public class Manager {
         this.staff = staff;
     }
 
-    public Long getId() {
+    public Integer getId() {
         return man_id;
     }
 

@@ -13,7 +13,7 @@ public class Client {
 
     @Id
     @GeneratedValue
-    private Long c_id;
+    private Integer c_id;
 
     @Column
     private String c_name;
@@ -63,7 +63,7 @@ public class Client {
         this.c_name = c_name;
     }
 
-    public Long getId() {
+    public Integer getId() {
         return c_id;
     }
 

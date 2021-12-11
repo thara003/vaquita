@@ -7,7 +7,7 @@ import javax.persistence.*;
 public class Userrequest   {
     @Id
     @GeneratedValue
-    private Long rqst_id;
+    private Integer rqst_id;
     @Column
     private String req_status;
 
@@ -18,20 +18,20 @@ public class Userrequest   {
 
     public Userrequest(){}
 
-    public Userrequest(String req_status,Long rqst_id, Client client) {
+    public Userrequest(String req_status, Client client) {
 //        this.c_id = c_id;
         this.req_status=req_status;
         this.client = client;
 
 
     }
-    public Long getC_id() {
+    public Integer getId() {
         return rqst_id;
     }
 
-    public void setC_id(Long c_id) {
-        this.rqst_id = rqst_id;
-    }
+//    public void setC_id(Long c_id) {
+//        this.rqst_id = rqst_id;
+//    }
 
 
 

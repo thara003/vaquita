@@ -57,7 +57,7 @@ public class Application implements CommandLineRunner
 		eventsService.addEvents(events);
 		Staff staff = new Staff("staff1","place","manager","10L","completed","password",events);
 		staffService.addStaff(staff);
-		Userrequest userrequest = new Userrequest("confirmed",123L,client);
+		Userrequest userrequest = new Userrequest("confirmed",client);
 		userrequestService.addUserrequest(userrequest);
 		Feedback feedback = new Feedback(2L,"good",client,events);
 		feedbackService.addFeedback(feedback);
