@@ -33,9 +33,10 @@ public class Client {
     private String c_password;
 
     @OneToMany(mappedBy = "client", fetch = FetchType.LAZY, orphanRemoval = false)
-    private final List<Events> listEvents = new ArrayList<>();
+    private List<Events> listEvents = new ArrayList<>();
+
     @OneToMany(mappedBy = "client", fetch = FetchType.LAZY, orphanRemoval = false)
-    private final List<Userrequest> listUserrequest = new ArrayList<>();
+    private List<Userrequest> listUserrequest = new ArrayList<>();
 
 
 
@@ -121,6 +122,13 @@ public class Client {
         this.c_password = c_password;
     }
 
+    public List<Events> getListEvents() {
+        return listEvents;
+    }
+
+    public List<Userrequest> getListUserrequest() {
+        return listUserrequest;
+    }
 
     @Override
     public String toString() {

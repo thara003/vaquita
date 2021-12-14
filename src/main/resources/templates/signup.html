@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -34,15 +34,21 @@
     <div class="container p-4" style="width: 500px">
       <h4 class="text-center">Register</h4>
       <form
+              action="#"
         onSubmit="alert('Succsessfuly Registered. Please navigate to home page for login');"
+        th:action="@{/login/save}"
+        th:object="${theClient}"
+              method="post"
       >
         <div class="form-group mb-3">
           <label for="exampleFormControlInput1 validationServer01"
             >Enter Your Name
           </label>
           <input
+                  th:field="*{name}"
             type="text"
             class="form-control"
+
             id="exampleFormControlInput1 validationServer01"
             placeholder="name"
             required
@@ -56,6 +62,7 @@
             type="tel"
             maxlength="10"
             class="form-control"
+            th:field="*{contact}"
             id="exampleFormControlInput1"
             placeholder="mobile number"
             required
@@ -68,6 +75,7 @@
           <input
             type="email"
             class="form-control"
+            th:field="*{mail}"
             id="exampleFormControlInput1"
             placeholder="name@example.com"
             required
@@ -79,6 +87,7 @@
           <input
             type="text"
             class="form-control"
+            th:field="*{user}"
             id="inputEmail"
             placeholder="Username"
             required
@@ -89,6 +98,7 @@
           <input
             type="password"
             class="form-control"
+            th:field="*{pass}"
             id="inputpassword"
             placeholder="Password"
             onkeyup="check();"

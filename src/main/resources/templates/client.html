@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -14,9 +14,11 @@
     
     <style>
         body {
-         
           background-color:rgb(31, 29, 29);
-          
+        }
+        .booking{
+          margin-top: 20px;
+          color: whitesmoke;
         }
        
     </style>
@@ -31,13 +33,15 @@
           <a href="index.html" class="btn btn-warning">Logout</a>
         </div>
       </div>
+<!--      <p class="h4 mb-4" th:text="'Course : ' + ${client.name}" />-->
+
       <div class="row" style="margin-top: 20px">
         <div class="col-sm-3">
           <div class="card border border-2 border bg-dark text-light">
             <div class="card-body">
               <h5 class="card-title">Add Event</h5>
 
-              <a href="addevent.html" class="btn btn-primary">Add</a>
+              <a href="#" class="btn btn-primary add-event">Add</a>
             </div>
           </div>
         </div>
@@ -83,45 +87,194 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>Event 1</td>
-              <td>Sub Event 1</td>
-              <td>Priority 1</td>
-              <td>Destination 1</td>
-              <td>2020-01-01</td>
-              <td>Completed</td>
-              <td><input type="button" class="btn btn-danger delete-btn" value="Delete"></td>
-              
-            </tr>
-            <tr>
-              <td>Event 2</td>
-              <td>Sub Event 2</td>
-              <td>Priority 2</td>
-              <td>Destination 2</td>
-              <td>2020-01-01</td>
-              <td>Completed</td>
-              <td><input type="button" class="btn btn-danger delete-btn" value="Delete"></td>
-            </tr>
-            <tr>
-              <td>Event 3</td>
-              <td>Sub Event 3</td>
-              <td>Priority 3</td>
-              <td>Destination 3</td>
-              <td>2020-01-01</td>
-              <td>Completed</td>
-              <td><input type="button" class="btn btn-danger delete-btn" value="Delete"></td>
-            </tr>
-            <tr>
-              <td>Event 4</td>
-              <td>Sub Event 4</td>
-              <td>Priority 4</td>
-              <td>Destination 4</td>
-              <td>2020-01-01</td>
-              <td>Completed</td>
-              <td><input type="button" class="btn btn-danger delete-btn" value="Delete"></td>
-            </tr>
+<!--          <tr th:each="temp : ${reviews}">-->
+<!--            <td th:text="${temp.id}" />-->
+<!--            <td th:text="${temp.rating}" />-->
+<!--            <td th:text="${temp.description}" />-->
+<!--            <td>-->
+<!--              <a th:href="@{'/reviews/remove?id='+${temp.id}+'&cid='+${course.id}}">Remove Review</a>-->
+<!--            </td>-->
+<!--          </tr>-->
+<tr th:each="temp : ${listEvents}">
+
+  <td th:text="${temp.event_name}" />
+  <td th:text="${temp.subevent}" />
+  <td th:text="${temp.priority}" />
+  <td th:text="${temp.destination}" />
+  <td th:text="${temp.event_date}" />
+  <td th:text="${temp.status}" />
+  <td>
+    <a th:href="@{'/clients/deleteEvents?id='+${temp.id}+'&c_id='+${client.id}}" class="btn btn-danger delete-btn" >Delete</a>
+  </td>
+<!--            <tr>-->
+<!--              <td>Event 1</td>-->
+<!--              <td>Sub Event 1</td>-->
+<!--              <td>Priority 1</td>-->
+<!--              <td>Destination 1</td>-->
+<!--              <td>2020-01-01</td>-->
+<!--              <td>Completed</td>-->
+<!--              <td><input type="button" class="btn btn-danger delete-btn" value="Delete"></td>-->
+<!--              -->
+<!--            </tr>-->
+<!--            <tr>-->
+<!--              <td>Event 2</td>-->
+<!--              <td>Sub Event 2</td>-->
+<!--              <td>Priority 2</td>-->
+<!--              <td>Destination 2</td>-->
+<!--              <td>2020-01-01</td>-->
+<!--              <td>Completed</td>-->
+<!--              <td><input type="button" class="btn btn-danger delete-btn" value="Delete"></td>-->
+<!--            </tr>-->
+<!--            <tr>-->
+<!--              <td>Event 3</td>-->
+<!--              <td>Sub Event 3</td>-->
+<!--              <td>Priority 3</td>-->
+<!--              <td>Destination 3</td>-->
+<!--              <td>2020-01-01</td>-->
+<!--              <td>Completed</td>-->
+<!--              <td><input type="button" class="btn btn-danger delete-btn" value="Delete"></td>-->
+<!--            </tr>-->
+<!--            <tr>-->
+<!--              <td>Event 4</td>-->
+<!--              <td>Sub Event 4</td>-->
+<!--              <td>Priority 4</td>-->
+<!--              <td>Destination 4</td>-->
+<!--              <td>2020-01-01</td>-->
+<!--              <td>Completed</td>-->
+<!--              <td><input type="button" class="btn btn-danger delete-btn" value="Delete"></td>-->
+<!--            </tr>-->
           </tbody>
         </table>
+      </div>
+      <div class="container p-4 booking border border-primary" style="width: 500px ; display: none; ">
+        <h4 class="text-center">Booking</h4>
+        <form action="#" method="post"
+              th:action="@{'/clients/save?id='+${id}}"
+              th:object="${theEvent}">
+          <div class="form-group mb-3">
+            <label for="exampleFormControlInput1"> Event </label>
+            <input
+                    type="text"
+                    th:field="*{event_name}"
+                    class="form-control"
+                    id="exampleFormControlInput1"
+                    placeholder="Wedding,Birthday,Anniversary etc.."
+            />
+          </div>
+<!--          <div class="form-group mb-3">-->
+<!--            <label for="exampleFormControlSelect1">Event</label>-->
+<!--            <select class="form-control" id="exampleFormControlSelect1" th:field="*{event_name}">-->
+<!--              <option>Select event type</option>-->
+<!--              <option>Wedding</option>-->
+<!--              <option>Anniversary</option>-->
+<!--              <option>Birthday</option>-->
+<!--              <option>Seminar</option>-->
+<!--              <option>Reunion</option>-->
+<!--            </select>-->
+<!--          </div>-->
+          <div class="form-group mb-3">
+            <label for="exampleFormControlInput1">Sub Events (if any) </label>
+            <input
+                    type="text"
+                    th:field="*{subevent}"
+            class="form-control"
+            id="exampleFormControlInput1"
+            placeholder="Specify like haldi,buffet etc.."
+            />
+          </div>
+          <div class="form-group mb-3">
+            <label for="exampleFormControlInput1">Scheduled Date</label>
+            <input
+                    type="date"
+                    class="form-control"
+                    th:field="*{event_date}"
+                    id="exampleFormControlInput1"
+            placeholder="dd-mm-yy"
+            required
+            />
+          </div>
+          <div class="form-check" >
+            <input
+                    class="form-check-input"
+                    type="radio"
+                    th:field="*{priority}"
+                    name="exampleRadios"
+            id="exampleRadios1"
+            value="high"
+            checked
+            />
+            <label class="form-check-label" for="exampleRadios1">
+              High priority
+            </label>
+          </div>
+          <div class="form-check">
+            <input
+                    class="form-check-input"
+                    type="radio"
+                    th:field="*{priority}"
+            name="exampleRadios"
+            id="exampleRadios2"
+            value="medium"
+            />
+            <label class="form-check-label" for="exampleRadios2">
+              Medium priority
+            </label>
+          </div>
+          <div class="form-check">
+            <input
+                    class="form-check-input"
+                    type="radio"
+                    th:field="*{priority}"
+            name="exampleRadios"
+            id="exampleRadios3"
+            value="low"
+            />
+            <label class="form-check-label" for="exampleRadios3">
+              Low priority
+            </label>
+          </div>
+          <div class="form-group mb-3">
+            <label for="exampleFormControlInput1 validationServer04"
+            >Address
+            </label>
+            <input
+                    type="text"
+                    class="form-control "
+                    th:field="*{destination}"
+            id="exampleFormControlInput1 validationServer01"
+            placeholder="address line-1"
+            />
+          </div>
+<!--          <div class="form-row" style="display: inline-flex">-->
+<!--            <div class="col-md-6 mb-3">-->
+<!--              <label for="validationServer04">City</label>-->
+<!--              <input-->
+<!--                      type="text"-->
+<!--                      class="form-control "-->
+<!--                      th:field="*{dest_city}"-->
+<!--              id="validationServer03"-->
+<!--              placeholder="City"-->
+<!--              required-->
+<!--              />-->
+<!--              <div class="invalid-feedback">Please provide a valid city.</div>-->
+<!--            </div>-->
+<!--            <div class="col-md-6 mb-3 mx-2">-->
+<!--              <label for="validationServer05">Zip</label>-->
+<!--              <input-->
+<!--                      type="number"-->
+<!--                      class="form-control"-->
+<!--                      th:field="*{dest_zip}"-->
+<!--              id="validationServer05"-->
+<!--              placeholder="Zip"-->
+<!--              required-->
+<!--              />-->
+<!--              <div class="invalid-feedback">Please provide a valid zip.</div>-->
+<!--            </div>-->
+<!--          </div>-->
+          <a href="client.html" class="btn btn-danger">Close</a>
+          <button type="submit" class="btn btn-primary">Submit</button>
+
+        </form>
       </div>
     </div>
   </body>
@@ -137,5 +290,10 @@
                 e.target.parentElement.parentElement.remove();
             }
         });
+      document.querySelector(".add-event").addEventListener("click",function (e){
+        e.preventDefault();
+        document.querySelector(".booking").style.display = "block";
+      });
+      
   </script>
 </html>

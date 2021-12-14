@@ -33,7 +33,10 @@ public class Events {
     private String dest_city;
 
     @Column
-    private Integer dest_zip;
+    private Long dest_zip;
+
+    @Column
+    private String status;
 
     @Column
     private String staffs;
@@ -45,16 +48,19 @@ public class Events {
 
     @OneToMany(mappedBy = "events", fetch = FetchType.LAZY, orphanRemoval = false)
     private final List<Staff> listStaff = new ArrayList<>();
+
     @OneToMany(mappedBy = "events", fetch = FetchType.LAZY, orphanRemoval = false)
     private final List<Manager> listManager = new ArrayList<>();
+
     @OneToOne(mappedBy = "events", fetch = FetchType.LAZY, orphanRemoval = false)
     private  Feedback listFeedback;
+
     @OneToOne(mappedBy = "events", fetch = FetchType.LAZY, orphanRemoval = false)
     private  Billing listBilling;
 
     public Events(){}
 
-    public Events ( String event_name, String subevent, String event_date, String priority, String destination, String dest_city, Integer dest_zip, String staffs,Client client){
+    public Events ( String event_name, String subevent, String event_date, String priority, String destination, String dest_city, Long dest_zip,String status, String staffs,Client client){
         this.event_name = event_name;
         this.subevent = subevent;
         this.event_date = event_date;
@@ -62,6 +68,7 @@ public class Events {
         this.destination = destination;
         this.dest_city = dest_city;
         this.dest_zip = dest_zip;
+        this.status = status;
         this.staffs = staffs;
         this.client = client;
     }
@@ -118,7 +125,7 @@ public class Events {
         this.dest_city = dest_city;
     }
 
-    public Integer getDest_zip(Integer dest_zip){
+    public Long getDest_zip(Long dest_zip){
         return dest_zip ;
     }
 
@@ -128,6 +135,14 @@ public class Events {
 
     public void setStaffs(String staffs) {
         this.staffs = staffs;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 
     public Client getClient() {
@@ -140,6 +155,7 @@ public class Events {
 
     @Override
     public String toString (){
-        return "Events [event_name=" + event_name + ",event_id=" + event_id + "subevent=" + subevent +"event_date" + event_date + "priority=" + priority + "destination=" + destination +"dest_city=" + dest_city + "dest_zip=" + dest_zip + "staffs=" + staffs +"client="+client+"]";
+        return "Events [event_name=" + event_name + ",event_id=" + event_id + "subevent=" + subevent +"event_date" + event_date + "priority=" + priority + "destination=" + destination +"dest_city=" + dest_city + "dest_zip=" + dest_zip + "staffs=" + staffs +"status = "+ status
+        +"client="+client+"]";
     }
 }

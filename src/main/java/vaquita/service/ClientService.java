@@ -21,7 +21,7 @@ public class ClientService
     }
 
     @Transactional
-    public Client getClientById(int id){
+    public Client getAllClientById(int id){
         return clientRepository.findById(id).isPresent() ? clientRepository.findById(id).get() : null;
     }
 

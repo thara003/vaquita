@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -26,10 +26,10 @@
   <body>
     <div class="container p-4" style="width: 500px">
       <h4 class="text-center">Booking</h4>
-      <form action="#">
+      <form action="#" method="post">
         <div class="form-group mb-3">
           <label for="exampleFormControlSelect1">Event</label>
-          <select class="form-control" id="exampleFormControlSelect1">
+          <select class="form-control" id="exampleFormControlSelect1" >
             <option>Select event type</option>
             <option>Wedding</option>
             <option>Anniversary</option>
@@ -42,6 +42,7 @@
           <label for="exampleFormControlInput1">Sub Events (if any) </label>
           <input
             type="text"
+<!--            th:field="*{subevent}"-->
             class="form-control"
             id="exampleFormControlInput1"
             placeholder="Specify like haldi,buffet etc.."
@@ -52,15 +53,17 @@
             <input
               type="date"
               class="form-control"
+<!--              th:field="*{event_date}"-->
               id="exampleFormControlInput1"
               placeholder="dd-mm-yy"
               required
             />
           </div>
-        <div class="form-check">
+        <div class="form-check" >
           <input
             class="form-check-input"
             type="radio"
+<!--            th:field="*{priority}"-->
             name="exampleRadios"
             id="exampleRadios1"
             value="option1"
@@ -74,6 +77,7 @@
           <input
             class="form-check-input"
             type="radio"
+<!--            th:field="*{priority}"-->
             name="exampleRadios"
             id="exampleRadios2"
             value="option2"
@@ -86,6 +90,7 @@
           <input
             class="form-check-input"
             type="radio"
+<!--            th:field="*{priority}"-->
             name="exampleRadios"
             id="exampleRadios3"
             value="option3"
@@ -101,6 +106,7 @@
           <input
             type="text"
             class="form-control "
+<!--            th:field="*{destination}"-->
             id="exampleFormControlInput1 validationServer01"
             placeholder="address line-1"
           />
@@ -111,6 +117,7 @@
             <input
               type="text"
               class="form-control "
+<!--              th:field="*{dest_city}"-->
               id="validationServer03"
               placeholder="City"
               required
@@ -120,8 +127,9 @@
           <div class="col-md-6 mb-3 mx-2">
             <label for="validationServer05">Zip</label>
             <input
-              type="text"
+              type="number"
               class="form-control"
+<!--              th:field="*{dest_zip}"-->
               id="validationServer05"
               placeholder="Zip"
               required

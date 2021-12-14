@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import vaquita.entity.Events;
+import vaquita.entity.Review;
 import vaquita.repository.EventsRepository;
 
 @Service
@@ -39,4 +40,9 @@ public class EventsService {
     public void deleteEvents(int id){
         eventsRepository.deleteById(id);
     }
+
+//    @Transactional
+//    public void remove(E review) {
+//        eventsRepository.delete(review);
+//    }
 }

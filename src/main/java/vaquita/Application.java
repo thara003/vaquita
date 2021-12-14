@@ -53,7 +53,7 @@ public class Application implements CommandLineRunner
 
 		Client client = new Client("Client1","client1@gmail.com", 1123456789L,"place","city1",688561,"client1","password");
 		clientService.addClient(client);
-		Events events = new Events("Wedding","haldi","10-12-2021","high","place","city",688561,"staff1",client);
+		Events events = new Events("Wedding","haldi","10-12-2021","high","place","city",688561L,"done","staff1",client);
 		eventsService.addEvents(events);
 		Staff staff = new Staff("staff1","place","manager","10L","completed","password",events);
 		staffService.addStaff(staff);
