@@ -39,6 +39,9 @@ public class Application implements CommandLineRunner
 	@Autowired
 	private BillingService billingService;
 
+	@Autowired
+	private AdminService adminService;
+
 
 	public static void main(String[] args) {
 		SpringApplication.run(Application.class, args);
@@ -51,7 +54,7 @@ public class Application implements CommandLineRunner
 //		studentService.save(student);
 //		Course course = new Course("Hey");
 
-		Client client = new Client("Client1","client1@gmail.com", 1123456789L,"place","city1",688561,"client1","password");
+		Client client = new Client("Client1","client1@gmail.com", 1123456789,"place","city1",688561,"client1","password");
 		clientService.addClient(client);
 		Events events = new Events("Wedding","haldi","10-12-2021","high","place","city",688561L,"done","staff1",client);
 		eventsService.addEvents(events);
@@ -65,6 +68,8 @@ public class Application implements CommandLineRunner
 		managerService.addManager(manager);
 		Billing billing = new Billing(1234L,13000F,"paid",client,events);
 		billingService.addBilling(billing);
+		Admin admin = new Admin("admin","adminpassword");
+		adminService.addAdmin(admin);
 
 //		courseService.save(course);
 //		student.addCourse(course);

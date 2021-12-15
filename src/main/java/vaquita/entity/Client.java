@@ -20,7 +20,7 @@ public class Client {
     @Column
     private String c_mail;
     @Column(length = 10)
-    private Long c_contact;
+    private int c_contact;
     @Column
     private String c_address;
     @Column
@@ -43,7 +43,7 @@ public class Client {
 
     public Client() {}
 
-    public Client(String c_name,String c_mail,Long c_contact,String c_address,String c_city,Integer c_zip,String c_username,String c_password) {
+    public Client(String c_name,String c_mail,int c_contact,String c_address,String c_city,Integer c_zip,String c_username,String c_password) {
         this.c_name = c_name;
         this.c_contact = c_contact;
         this.c_mail = c_mail;
@@ -76,11 +76,11 @@ public class Client {
         this.c_mail = c_mail;
     }
 
-    public Long getContact() {
+    public int getContact() {
         return c_contact;
     }
 
-    public void setContact(Long c_contact) {
+    public void setContact(int c_contact) {
         this.c_contact = c_contact;
     }
 

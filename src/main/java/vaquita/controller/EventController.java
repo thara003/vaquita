@@ -11,12 +11,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import vaquita.entity.Client;
 import vaquita.entity.Events;
-import vaquita.entity.Passport;
-import vaquita.entity.Student;
 import vaquita.service.ClientService;
 import vaquita.service.EventsService;
-import vaquita.service.PassportService;
-import vaquita.service.StudentService;
 
 @Controller
 @RequestMapping("/clients")

@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import vaquita.entity.*;
 import vaquita.service.ClientService;
 import vaquita.service.EventsService;
-
+import vaquita.service.FeedbackService;
 
 
 @Controller
@@ -22,6 +22,9 @@ public class ClientController {
 
     @Autowired
     private EventsService eventsService;
+
+    @Autowired
+    private FeedbackService feedbackService;
 
 //    @GetMapping("")
 //    public String findAll(Model model)
@@ -80,5 +83,24 @@ public class ClientController {
 //        clientService.updateClient(client);
 //        return "redirect:/client/" + id;
 //    }
+
+    @GetMapping("/addfeedback")
+    public String add(Model model, @RequestParam("id") int id){
+        Feedback theFeedback = new Feedback();
+        model.addAttribute("theFeedback",theFeedback);
+        model.addAttribute("id",id);
+        return "client";
+    }
+
+    @PostMapping("/savefeedback")
+    public String save(@RequestParam("id") int id, @ModelAttribute("theFeedback") Feedback theFeedback)
+    {
+        Client client = clientService.getAllClientById(id);
+        theFeedback.setClient(client);
+        feedbackService.addFeedback(theFeedback);
+        clientService.updateClient(client);
+        return  "redirect:/clients/"+ id;
+
+    }
 
 }

@@ -46,6 +46,7 @@ public class Events {
     private Client client;
 
 
+
     @OneToMany(mappedBy = "events", fetch = FetchType.LAZY, orphanRemoval = false)
     private final List<Staff> listStaff = new ArrayList<>();
 

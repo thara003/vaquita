@@ -97,14 +97,14 @@
 <!--          </tr>-->
 <tr th:each="temp : ${listEvents}">
 
-  <td th:text="${temp.event_name}" />
-  <td th:text="${temp.subevent}" />
-  <td th:text="${temp.priority}" />
-  <td th:text="${temp.destination}" />
-  <td th:text="${temp.event_date}" />
-  <td th:text="${temp.status}" />
+  <td th:text="${temp?.event_name}" />
+  <td th:text="${temp?.subevent}" />
+  <td th:text="${temp?.priority}" />
+  <td th:text="${temp?.destination}" />
+  <td th:text="${temp?.event_date}" />
+  <td th:text="${temp?.status}" />
   <td>
-    <a th:href="@{'/clients/deleteEvents?id='+${temp.id}+'&c_id='+${client.id}}" class="btn btn-danger delete-btn" >Delete</a>
+    <a th:href="@{'/clients/deleteEvents?id='+${temp?.id}+'&c_id='+${client?.id}}" class="btn btn-danger delete-btn" >Delete</a>
   </td>
 <!--            <tr>-->
 <!--              <td>Event 1</td>-->

@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import vaquita.entity.Events;
-import vaquita.entity.Review;
 import vaquita.repository.EventsRepository;
 
 @Service
