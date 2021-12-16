@@ -26,7 +26,7 @@ public class Staff {
     private String field;
 
     @Column
-    private String salary;
+    private int salary;
 
     @Column
     private String progress;
@@ -43,7 +43,7 @@ public class Staff {
 
     public Staff(){}
 
-    public Staff ( String s_name, String s_address, String field, String salary, String progress, String s_password, Events events){
+    public Staff ( String s_name, String s_address, String field, int salary, String progress, String s_password, Events events){
 
         this.s_name = s_name;
 //        this.event_id = event_id;
@@ -95,11 +95,11 @@ public class Staff {
         this.field = field;
     }
 
-    public String getSalary() {
+    public int getSalary() {
         return salary;
     }
 
-    public void setSalary(String salary) {
+    public void setSalary(int salary) {
         this.salary = salary;
     }
 
@@ -128,7 +128,17 @@ public class Staff {
     }
 
     @Override
-    public String toString (){
-        return "Staff [s_id=" + s_id + ",s_name=" + s_name +  ",s_address=" + s_address +"field" + field + "salary=" + salary + "progress=" + progress +"s_password=" + s_password + "events="+events+"]";
+    public String toString() {
+        return "Staff{" +
+                "s_id=" + s_id +
+                ", s_name='" + s_name + '\'' +
+//                ", event_id=" + event_id +
+                ", s_address='" + s_address + '\'' +
+                ", field='" + field + '\'' +
+                ", salary='" + salary + '\'' +
+                ", progress='" + progress + '\'' +
+                ", s_password='" + s_password + '\'' +
+                ", events=" + events +
+                '}';
     }
 }

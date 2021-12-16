@@ -7,7 +7,7 @@ import javax.persistence.*;
 public class Userrequest   {
     @Id
     @GeneratedValue
-    private Integer rqst_id;
+    private int rqst_id;
     @Column
     private String req_status;
 
@@ -16,24 +16,20 @@ public class Userrequest   {
     @JoinColumn(name = "client_id")
     private Client client;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "event_id")
+    private Events events;
+
     public Userrequest(){}
 
-    public Userrequest(String req_status, Client client) {
-//        this.c_id = c_id;
+    public Userrequest(String req_status, Client client, Events events) {
         this.req_status=req_status;
         this.client = client;
-
-
+        this.events = events;
     }
-    public Integer getId() {
+    public int getId() {
         return rqst_id;
     }
-
-//    public void setC_id(Long c_id) {
-//        this.rqst_id = rqst_id;
-//    }
-
-
 
     public String getReq_status() {
         return req_status;
@@ -51,9 +47,22 @@ public class Userrequest   {
         this.client = client;
     }
 
+    public Events getEvents() {
+        return events;
+    }
+
+    public void setEvents(Events events) {
+        this.events = events;
+    }
+
     @Override
     public String toString() {
-        return "userrequest [req_status=" +req_status + "rqst_id="+rqst_id+"client="+client+"]";
+        return "Userrequest{" +
+                "rqst_id=" + rqst_id +
+                ", req_status='" + req_status + '\'' +
+                ", client=" + client +
+                ", events=" + events +
+                '}';
     }
 
 

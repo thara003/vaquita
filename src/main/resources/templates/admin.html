@@ -1,170 +1,159 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Dashboard-Admn</title>
     <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
-      crossorigin="anonymous"
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+            crossorigin="anonymous"
     />
 
     <style>
-      body {
-        background-color: rgb(31, 29, 29);
-      }
+        body {
+            background-color: rgb(31, 29, 29);
+        }
     </style>
-  </head>
-  <body>
-    <div class="container" style="margin-top: 30px">
-      <div class="row">
+</head>
+<body>
+<div class="container" style="margin-top: 30px">
+    <div class="row">
         <div class="col-9">
-          <h1 class="text-left" style="color: whitesmoke">Dashboard</h1>
+            <h1 class="text-left" style="color: whitesmoke">Dashboard</h1>
         </div>
         <div class="col-3">
-          <a href="index.html" class="btn btn-warning">Logout</a>
+            <a href="/home" class="btn btn-warning">Logout</a>
         </div>
-      </div>
-      <!-- <h1 class="text-left"><i class="fas fa-chart-line"></i>Dashboard</h1> -->
-      <!-- <a href="#" class="btn btn-primary">Logout</a> -->
-      <div class="row" style="margin-top: 20px">
-        <div class="col-sm-3">
-          <div class="card border border-2 border bg-dark text-light">
-            <div class="card-body">
-              <h5 class="card-title">Staff list</h5>
-
-              <a href="#" class="btn btn-primary staff-view">View</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-3">
-          <div class="card border border-2 border bg-dark text-light">
-            <div class="card-body">
-              <h5 class="card-title">Client Details</h5>
-
-              <a href="#" class="btn btn-primary client-view">View</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-3">
-          <div class="card border border-2 border bg-dark text-light">
-            <div class="card-body">
-              <h5 class="card-title">Event List</h5>
-
-              <a href="#" class="btn btn-primary event-view">View</a>
-            </div>
-          </div>
-        </div>
-        <!--        <div class="col-sm-3">-->
-        <!--          <div class="card border border-2 border bg-dark text-light">-->
-        <!--            <div class="card-body">-->
-        <!--              <h5 class="card-title">Request confirmation</h5>-->
-
-        <!--              <a href="#" class="btn btn-primary">View</a>-->
-        <!--            </div>-->
-        <!--          </div>-->
-        <!--        </div>-->
-      </div>
-      <div class="my-4 client-table" style="display: none">
-        <table
-          class="table table-bordered border-primary view-table"
-          style="color: whitesmoke !important"
-        >
-          <thead class="table-dark">
-            <tr>
-              <th scope="col">Client_id</th>
-              <th scope="col">Client_name</th>
-              <th scope="col">Mail</th>
-              <th scope="col">Contact</th>
-            </tr>
-          </thead>
-          <tbody th:each="temp : ${listClients}">
-            <tr>
-              <td th:text="${temp?.id}" />
-              <td th:text="${temp?.name}" />
-              <td th:text="${temp?.mail}" />
-              <td th:text="${temp?.contact}" />
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      <div class="my-4 event-table" style="display: none">
-        <table
-          class="table table-bordered border-primary view-table"
-          style="color: whitesmoke !important"
-        >
-          <thead class="table-dark">
-            <tr>
-              <th scope="col">Event</th>
-              <th scope="col">Sub Event</th>
-              <th scope="col">Priority</th>
-              <th scope="col">Destination</th>
-              <th scope="col">Date</th>
-              <th scope="col">Status</th>
-            </tr>
-          </thead>
-          <tbody th:each="temp : ${listEvents}">
-            <tr>
-              <td th:text="${temp?.event_name}" />
-              <td th:text="${temp?.subevent}" />
-              <td th:text="${temp?.priority}" />
-              <td th:text="${temp?.destination}" />
-              <td th:text="${temp?.event_date}" />
-              <td th:text="${temp?.status}" />
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      <div class="my-4 staff-table" style="display: none">
-        <table
-          class="table table-bordered border-primary view-table"
-          style="color: whitesmoke !important"
-        >
-          <thead class="table-dark">
-            <tr>
-              <th scope="col">Staff Id</th>
-              <th scope="col">Staff Name</th>
-              <th scope="col">Staff Address</th>
-              <th scope="col">Field</th>
-              <th scope="col">Salary</th>
-              <th scope="col">Progress</th>
-            </tr>
-          </thead>
-          <tbody th:each="temp : ${staffList}">
-            <tr>
-              <td th:text="${temp?.s_name}" />
-              <td th:text="${temp?.s_address}" />
-              <td th:text="${temp?.field}" />
-              <td th:text="${temp?.salary}" />
-              <td th:text="${temp?.progress}" />
-
-            </tr>
-          </tbody>
-        </table>
-      </div>
     </div>
-  </body>
-  <script>
+    <!-- <h1 class="text-left"><i class="fas fa-chart-line"></i>Dashboard</h1> -->
+    <!-- <a href="#" class="btn btn-primary">Logout</a> -->
+    <div class="row" style="margin-top: 20px">
+        <div class="col-sm-3">
+            <div class="card border border-2 border bg-dark text-light">
+                <div class="card-body">
+                    <h5 class="card-title">Staff list</h5>
+
+                    <a href="#" class="btn btn-primary staff-view">View</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="card border border-2 border bg-dark text-light">
+                <div class="card-body">
+                    <h5 class="card-title">Client Details</h5>
+
+                    <a href="#" class="btn btn-primary client-view">View</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="card border border-2 border bg-dark text-light">
+                <div class="card-body">
+                    <h5 class="card-title">Event List</h5>
+
+                    <a href="#" class="btn btn-primary event-view">View</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="my-4 client-table" style="display: none">
+        <table
+                class="table table-bordered border-primary view-table"
+                style="color: whitesmoke !important"
+        >
+            <thead class="table-dark">
+            <tr>
+                <th scope="col">Client_id</th>
+                <th scope="col">Client_name</th>
+                <th scope="col">Mail</th>
+                <th scope="col">Contact</th>
+            </tr>
+            </thead>
+            <tbody th:each="temp : ${listClients}">
+            <tr>
+                <td th:text="${temp?.c_id}"/>
+                <td th:text="${temp?.c_name}"/>
+                <td th:text="${temp?.c_mail}"/>
+                <td th:text="${temp?.c_contact}"/>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="my-4 event-table" style="display: none">
+        <table
+                class="table table-bordered border-primary view-table"
+                style="color: whitesmoke !important"
+        >
+            <thead class="table-dark">
+            <tr>
+                <th scope="col">Event</th>
+                <th scope="col">Sub Event</th>
+                <th scope="col">Priority</th>
+                <th scope="col">Destination</th>
+                <th scope="col">Date</th>
+                <th scope="col">Status</th>
+            </tr>
+            </thead>
+            <tbody th:each="temp : ${listEvents}">
+            <tr>
+                <td th:text="${temp?.event_name}"/>
+                <td th:text="${temp?.subevent}"/>
+                <td th:text="${temp?.priority}"/>
+                <td th:text="${temp?.destination}"/>
+                <td th:text="${temp?.event_date}"/>
+                <td th:text="${temp?.status}"/>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="my-4 staff-table" style="display: none">
+        <table
+                class="table table-bordered border-primary view-table"
+                style="color: whitesmoke !important"
+        >
+            <thead class="table-dark">
+            <tr>
+                <th scope="col">Staff Id</th>
+                <th scope="col">Staff Name</th>
+                <th scope="col">Staff Address</th>
+                <th scope="col">Field</th>
+                <th scope="col">Salary</th>
+            </tr>
+            </thead>
+            <tbody th:each="temp : ${staffList}">
+            <tr>
+                <td th:text="${temp?.s_name}"/>
+                <td th:text="${temp?.s_address}"/>
+                <td th:text="${temp?.field}"/>
+                <td th:text="${temp?.salary}"/>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+</body>
+<script>
     document
-      .querySelector(".client-view")
-      .addEventListener("click", function (e) {
-        e.preventDefault();
-        document.querySelector(".client-table").style.display = "block";
-      });
-      document
-      .querySelector(".event-view")
-      .addEventListener("click", function (e) {
-        e.preventDefault();
-        document.querySelector(".event-table").style.display = "block";
-      });
-      document
-      .querySelector(".staff-view")
-      .addEventListener("click", function (e) {
-        e.preventDefault();
-        document.querySelector(".staff-table").style.display = "block";
-      });
-  </script>
+        .querySelector(".client-view")
+        .addEventListener("click", function (e) {
+            e.preventDefault();
+            document.querySelector(".client-table").style.display = "block";
+        });
+    document
+        .querySelector(".event-view")
+        .addEventListener("click", function (e) {
+            e.preventDefault();
+            document.querySelector(".event-table").style.display = "block";
+        });
+    document
+        .querySelector(".staff-view")
+        .addEventListener("click", function (e) {
+            e.preventDefault();
+            document.querySelector(".staff-table").style.display = "block";
+        });
+</script>
 </html>

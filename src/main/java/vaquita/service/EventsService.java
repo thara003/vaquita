@@ -35,13 +35,10 @@ public class EventsService {
         eventsRepository.save(events);
     }
 
+
     @Transactional
-    public void deleteEvents(int id){
-        eventsRepository.deleteById(id);
+    public void deleteEvents(Events events) {
+        eventsRepository.delete(events);
     }
 
-//    @Transactional
-//    public void remove(E review) {
-//        eventsRepository.delete(review);
-//    }
 }

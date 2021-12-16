@@ -10,13 +10,18 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @Controller
-@RequestMapping("/login")
+@RequestMapping("/home")
 public class LoginController {
 
     @Autowired
     private ClientService clientService;
 
     @GetMapping("")
+    public String home(Model model) {
+        return "index";
+    }
+
+    @GetMapping("/login")
     public String showLogin(Model model)
     {
         List<Client> clients = clientService.getAllClient();
@@ -24,7 +29,7 @@ public class LoginController {
         return "login";
     }
 
-    @GetMapping("/add")
+    @GetMapping("/signup")
     public String add(Model model)
     {
         Client theClient = new Client();
@@ -36,7 +41,10 @@ public class LoginController {
     public String save(@ModelAttribute("theClient") Client theClient)
     {
         clientService.addClient(theClient);
-        return "redirect:/login";
+        return "redirect:/home/login";
     }
+
+
+
 }
 

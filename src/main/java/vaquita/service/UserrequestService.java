@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import vaquita.entity.Client;
 import vaquita.entity.Userrequest;
 import vaquita.repository.UserrequestRepository;
 
@@ -30,12 +31,14 @@ public class UserrequestService
         userrequestRepository.save(userrequest);
     }
 
-
-
     @Transactional
     public void deleteUserrequest(int id){
         userrequestRepository.deleteById(id);
     }
 
+    @Transactional
+    public void updateUserrequest(Userrequest userrequest){
+        userrequestRepository.save(userrequest);
+    }
 
 }

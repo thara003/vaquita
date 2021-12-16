@@ -36,7 +36,7 @@
       <form
               action="#"
         onSubmit="alert('Succsessfuly Registered. Please navigate to home page for login');"
-        th:action="@{/login/save}"
+        th:action="@{/home/save}"
         th:object="${theClient}"
               method="post"
       >
@@ -45,7 +45,7 @@
             >Enter Your Name
           </label>
           <input
-                  th:field="*{name}"
+                  th:field="*{c_name}"
             type="text"
             class="form-control"
 
@@ -62,7 +62,7 @@
             type="tel"
             maxlength="10"
             class="form-control"
-            th:field="*{contact}"
+            th:field="*{c_contact}"
             id="exampleFormControlInput1"
             placeholder="mobile number"
             required
@@ -75,7 +75,7 @@
           <input
             type="email"
             class="form-control"
-            th:field="*{mail}"
+            th:field="*{c_mail}"
             id="exampleFormControlInput1"
             placeholder="name@example.com"
             required
@@ -87,7 +87,7 @@
           <input
             type="text"
             class="form-control"
-            th:field="*{user}"
+            th:field="*{c_username}"
             id="inputEmail"
             placeholder="Username"
             required
@@ -98,7 +98,7 @@
           <input
             type="password"
             class="form-control"
-            th:field="*{pass}"
+            th:field="*{c_password}"
             id="inputpassword"
             placeholder="Password"
             onkeyup="check();"
@@ -158,7 +158,7 @@
     <script>
       var check = function () {
         if (
-          document.getElementById("inputpassword").value ==
+          document.getElementById("inputpassword").value ===
           document.getElementById("confirmpassword").value
         ) {
           document.getElementById("message").style.color = "green";

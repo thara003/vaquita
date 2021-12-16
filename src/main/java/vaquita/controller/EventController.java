@@ -11,8 +11,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import vaquita.entity.Client;
 import vaquita.entity.Events;
+import vaquita.entity.Userrequest;
 import vaquita.service.ClientService;
 import vaquita.service.EventsService;
+import vaquita.service.UserrequestService;
+
+import java.util.List;
 
 @Controller
 @RequestMapping("/clients")
@@ -24,6 +28,9 @@ public class EventController {
 
     @Autowired
     private EventsService eventsService;
+
+    @Autowired
+    private UserrequestService userrequestService;
 
     @GetMapping("/add")
     public String add(Model model, @RequestParam("id") int id){
@@ -38,8 +45,16 @@ public class EventController {
     {
         Client client = clientService.getAllClientById(id);
         theEvent.setClient(client);
+        theEvent.setStatus("PENDING");
         eventsService.addEvents(theEvent);
         clientService.updateClient(client);
+
+        Userrequest userrequest = new Userrequest();
+        userrequest.setClient(client);
+        userrequest.setReq_status("PENDING");
+        userrequest.setEvents(theEvent);
+        userrequestService.addUserrequest(userrequest);
+
         return  "redirect:/clients/"+ id;
 
     }

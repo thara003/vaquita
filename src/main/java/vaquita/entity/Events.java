@@ -33,7 +33,7 @@ public class Events {
     private String dest_city;
 
     @Column
-    private Long dest_zip;
+    private int dest_zip;
 
     @Column
     private String status;
@@ -45,8 +45,6 @@ public class Events {
     @JoinColumn(name = "client_id")
     private Client client;
 
-
-
     @OneToMany(mappedBy = "events", fetch = FetchType.LAZY, orphanRemoval = false)
     private final List<Staff> listStaff = new ArrayList<>();
 
@@ -54,14 +52,14 @@ public class Events {
     private final List<Manager> listManager = new ArrayList<>();
 
     @OneToOne(mappedBy = "events", fetch = FetchType.LAZY, orphanRemoval = false)
-    private  Feedback listFeedback;
-
-    @OneToOne(mappedBy = "events", fetch = FetchType.LAZY, orphanRemoval = false)
     private  Billing listBilling;
+
+    @OneToMany(mappedBy = "events", fetch = FetchType.LAZY, orphanRemoval = false)
+    private List<Userrequest> listUserrequest = new ArrayList<>();
 
     public Events(){}
 
-    public Events ( String event_name, String subevent, String event_date, String priority, String destination, String dest_city, Long dest_zip,String status, String staffs,Client client){
+    public Events ( String event_name, String subevent, String event_date, String priority, String destination, String dest_city, int dest_zip, String status, String staffs,Client client){
         this.event_name = event_name;
         this.subevent = subevent;
         this.event_date = event_date;
@@ -126,8 +124,12 @@ public class Events {
         this.dest_city = dest_city;
     }
 
-    public Long getDest_zip(Long dest_zip){
+    public int getDest_zip(int dest_zip){
         return dest_zip ;
+    }
+
+    public void setDest_zip(int dest_zip) {
+        this.dest_zip = dest_zip;
     }
 
     public String getStaffs() {
@@ -154,9 +156,68 @@ public class Events {
         this.client = client;
     }
 
+    public List<Staff> getListStaff() {
+        return listStaff;
+    }
+
+    public List<Manager> getListManager() {
+        return listManager;
+    }
+
+    public Billing getListBilling() {
+        return listBilling;
+    }
+
+    public void setListBilling(Billing listBilling) {
+        this.listBilling = listBilling;
+    }
+
+    public void addStaff(Staff staff) {
+        listStaff.add(staff);
+    }
+
+    public void addManager(Manager manager) {
+        listManager.add(manager);
+    }
+
+    public void removeStaff(Staff staff) {
+        listStaff.remove(staff);
+    }
+
+    public void removeManager(Manager manager) {
+        listManager.remove(manager);
+    }
+
+    public void removeAllStaff() {
+        listStaff.clear();
+    }
+
+    public void removeAllManager() {
+        listManager.clear();
+    }
+
+    public List<Userrequest> getListUserrequest() {
+        return listUserrequest;
+    }
+
+    public void addUserrequest(Userrequest userrequest) {
+        listUserrequest.add(userrequest);
+    }
+
+    public void removeUserrequest(Userrequest userrequest) {
+        listUserrequest.remove(userrequest);
+    }
+
+    public void removeAllUserrequest() {
+        listUserrequest.clear();
+    }
+
+    public void setListUserrequest(List<Userrequest> listUserrequest) {
+        this.listUserrequest = listUserrequest;
+    }
+
     @Override
-    public String toString (){
-        return "Events [event_name=" + event_name + ",event_id=" + event_id + "subevent=" + subevent +"event_date" + event_date + "priority=" + priority + "destination=" + destination +"dest_city=" + dest_city + "dest_zip=" + dest_zip + "staffs=" + staffs +"status = "+ status
-        +"client="+client+"]";
+    public String toString() {
+        return "Events{" + "event_id=" + event_id + ", event_name=" + event_name + ", subevent=" + subevent + ", event_date=" + event_date + ", priority=" + priority + ", destination=" + destination + ", dest_city=" + dest_city + ", dest_zip=" + dest_zip + ", status=" + status + ", staffs=" + staffs + ", client=" + client + ", listStaff=" + listStaff + ", listManager=" + listManager + ", listBilling=" + listBilling + ", listUserrequest=" + listUserrequest + '}';
     }
 }

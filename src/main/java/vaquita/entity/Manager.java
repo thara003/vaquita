@@ -71,7 +71,6 @@ public class Manager {
 
 
 
-
     //    public Long getEvent_id() {
 //        return event_id;
 //    }

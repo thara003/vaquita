@@ -1,6 +1,7 @@
 package vaquita.controller;
 
 import java.util.List;
+import java.util.logging.Logger;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,6 +12,7 @@ import vaquita.entity.*;
 import vaquita.service.ClientService;
 import vaquita.service.EventsService;
 import vaquita.service.FeedbackService;
+import vaquita.service.UserrequestService;
 
 
 @Controller
@@ -25,6 +27,9 @@ public class ClientController {
 
     @Autowired
     private FeedbackService feedbackService;
+
+    @Autowired
+    private UserrequestService userrequestService;
 
 //    @GetMapping("")
 //    public String findAll(Model model)
@@ -47,60 +52,59 @@ public class ClientController {
 
         Events theEvent = new Events();
         model.addAttribute("theEvent", theEvent);
+        model.addAttribute("eventId", theEvent.getId());
+
+        Feedback theFeedback = new Feedback();
+        model.addAttribute("theFeedback", theFeedback);
 
         return "client";
     }
 
+    @PostMapping("/savefeedback")
+    public String saveFeedback(@ModelAttribute("theFeedback") Feedback theFeedback, @RequestParam("id") int id){
+        Client client = clientService.getAllClientById(id);
+        theFeedback.setClient(client);
+        feedbackService.addFeedback(theFeedback);
+        clientService.updateClient(client);
+        return "redirect:/clients/" + client.getC_id();
+    }
 
-//
-//    @GetMapping("/add")
-//    public String add(@ModelAttribute("theEvent") Events theEvent, @RequestParam("id") int id)
-//    {
-////        Client client = clientService.getAllClientById(id);
-////        model.addAttribute("client", client);
-////        model.addAttribute("id", id);
-//        Events theEvent = new Events();
-//        model.addAttribute("theEvent", theClient);
-////        return "signup";
-//        return "client";
-//    }
 
     @PostMapping("/{id}/save")
     public String save(@ModelAttribute("theEvent") Events theEvent, @RequestParam("id") int id)
     {
         Client client = clientService.getAllClientById(id);
         theEvent.setClient(client);
+        theEvent.setStatus("Pending");
+
         eventsService.addEvents(theEvent);
         clientService.updateClient(client);
         return "redirect:/clients/" + id;
     }
 
-//    @PostMapping("/save")
-//    public String save(@ModelAttribute("theProjectOrder") ProjectOrder theProjectOrder, @RequestParam("id") int id) {
-//        Client client = clientService.getClientById(id);
-//        theProjectOrder.setClient(client);
-//        projectOrderService.addProjectOrder(theProjectOrder);
-//        clientService.updateClient(client);
-//        return "redirect:/client/" + id;
-//    }
+    @GetMapping("/deleteEvents")
+    public String remove(@RequestParam("eid") int eid, @RequestParam("cid") int cid)
+    {
+        Client client = clientService.getAllClientById(cid);
+        Events events = eventsService.getEventsById(eid);
+        List<Userrequest> listUserrequest = events.getListUserrequest();
+        for(Userrequest userrequest : listUserrequest)
+        {
+            if (userrequest.getEvents().getId() == eid){
+                userrequestService.deleteUserrequest(userrequest.getId());
+            }
+        }
+        client.removeEvents(events);
+        clientService.updateClient(client);
+        eventsService.deleteEvents(events);
 
-    @GetMapping("/addfeedback")
-    public String add(Model model, @RequestParam("id") int id){
-        Feedback theFeedback = new Feedback();
-        model.addAttribute("theFeedback",theFeedback);
-        model.addAttribute("id",id);
-        return "client";
+        return "redirect:/clients/" + cid;
     }
 
-    @PostMapping("/savefeedback")
-    public String save(@RequestParam("id") int id, @ModelAttribute("theFeedback") Feedback theFeedback)
+    @GetMapping("/payment")
+    public String payment( Model model )
     {
-        Client client = clientService.getAllClientById(id);
-        theFeedback.setClient(client);
-        feedbackService.addFeedback(theFeedback);
-        clientService.updateClient(client);
-        return  "redirect:/clients/"+ id;
-
+        return "payment";
     }
 
 }

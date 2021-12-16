@@ -6,14 +6,12 @@ import javax.persistence.*;
 public class Billing{
     @Id
     @GeneratedValue
-    private Long bill_id;
-//    private Long c_id;
-//    @Column
-//    private Long event_id;
+    private int bill_id;
+
     @Column
-    private Long billno;
+    private int billno;
     @Column
-    private Float amount;
+    private int amount;
     @Column
     private String paystatus;
 
@@ -25,45 +23,29 @@ public class Billing{
     @JoinColumn(name = "event_id")
     private Events events;
 
+
     public Billing(){}
 
-    public Billing(Long billno,Float amount,String paystatus, Client client, Events events) {
+    public Billing(int billno,int amount,String paystatus, Client client, Events events) {
         this.client = client;
         this.events = events;
         this.billno= billno;
         this.amount=amount;
         this.paystatus=paystatus;
-//        this.c_id = c_id;
-//        this.event_id = event_id;
-
-
     }
-//    public Long getC_id() {
-//        return c_id;
-//    }
-//
-//    public void setC_id(Long c_id) {
-//        this.c_id = c_id;
-//    }
-//    public Long getEvent_id() {
-//        return event_id;
-//    }
-//
-//    public void setEvent_id(Long event_id) {
-//        this.event_id = event_id;
-//    }
-    public Long getBillno() {
+
+    public int getBillno() {
         return billno;
     }
 
-    public void setBillno(Long billno) {
+    public void setBillno(int billno) {
         this.billno = billno;
     }
-    public Float getAmount() {
+    public int getAmount() {
         return amount;
     }
 
-    public void setAmount(Float amount) {
+    public void setAmount(int amount) {
         this.amount = amount;
     }
     public String getPaystatus() {
@@ -89,13 +71,22 @@ public class Billing{
     public void setClient(Client client) {
         this.client = client;
     }
-    public Long getId() {
+
+    public int getId() {
         return bill_id;
     }
 
+
     @Override
     public String toString() {
-        return "billing [ billno=" +billno + ",amount=" + amount + ",paystatus=" +paystatus + ",bill_id = "+bill_id+",client="+client+",events="+events+"]";
+        return "Billing{" +
+                "bill_id=" + bill_id +
+                ", billno=" + billno +
+                ", amount=" + amount +
+                ", paystatus='" + paystatus + '\'' +
+                ", client=" + client +
+                ", events=" + events +
+                '}';
     }
 
 

@@ -12,11 +12,6 @@ import vaquita.service.*;
 @SpringBootApplication
 public class Application implements CommandLineRunner
 {
-	@Autowired
-	private StudentService studentService;
-
-	@Autowired
-	private CourseService courseService;
 
 	@Autowired
 	private ClientService clientService;
@@ -56,18 +51,19 @@ public class Application implements CommandLineRunner
 
 		Client client = new Client("Client1","client1@gmail.com", 1123456789,"place","city1",688561,"client1","password");
 		clientService.addClient(client);
-		Events events = new Events("Wedding","haldi","10-12-2021","high","place","city",688561L,"done","staff1",client);
+		Events events = new Events("Wedding","haldi","10-12-2021","high","place","city",688561,"done","staff1",client);
 		eventsService.addEvents(events);
-		Staff staff = new Staff("staff1","place","manager","10L","completed","password",events);
+		Staff staff = new Staff("staff1","place","manager",1000,"completed","password",events);
 		staffService.addStaff(staff);
-		Userrequest userrequest = new Userrequest("confirmed",client);
+		Userrequest userrequest = new Userrequest("confirmed",client, events);
 		userrequestService.addUserrequest(userrequest);
-		Feedback feedback = new Feedback(2L,"good",client,events);
+		Feedback feedback = new Feedback("satisfied","good", "chumma@gmail.com",client);
 		feedbackService.addFeedback(feedback);
 		Manager manager = new Manager(client,events,staff);
 		managerService.addManager(manager);
-		Billing billing = new Billing(1234L,13000F,"paid",client,events);
+		Billing billing = new Billing(1234,13000,"paid",client,events);
 		billingService.addBilling(billing);
+
 		Admin admin = new Admin("admin","adminpassword");
 		adminService.addAdmin(admin);
 

@@ -8,13 +8,13 @@ public class Feedback{
     @GeneratedValue
     private Integer feed_id;
 
-//    private Long c_id;
-//    @Column
-//    private Long event_id;
     @Column
-    private Long feed_val;
+    private String feed_val;
     @Column
     private String feedback;
+
+    @Column
+    private String email_address;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "client_id")
@@ -23,46 +23,31 @@ public class Feedback{
 //    @ManyToOne(fetch = FetchType.LAZY)
 //    @JoinColumn(name = "event_id")
 //    private Events events;
-     @OneToOne(fetch = FetchType.LAZY)
-     @JoinColumn(name = "event_id")
-     private Events events;
+//     @OneToOne(fetch = FetchType.LAZY)
+//     @JoinColumn(name = "event_id")
+//     private Events events;
 
-    public Feedback(){}
-
-    public Feedback(Long feed_val,String feedback,Client client, Events events) {
-
-//        this.c_id = c_id;
-//        this.event_id = event_id;
-        this.feed_val= feed_val;
-        this.feedback=feedback;
-//        this.feed_id = feed_id;
-        this.client = client;
-        this.events = events;
-
-
+    public Feedback() {
     }
 
-//    public void setC_id(Long c_id) {
-//        this.c_id = c_id;
-//    }
-//
-//    public Long getC_id() {
-//        return c_id;
-//    }
+    public Feedback(String feed_val, String feedback, String email_address,Client client) {
+        this.feed_val = feed_val;
+        this.feedback = feedback;
+        this.email_address = email_address;
+        this.client = client;
+//        this.events = events;
+    }
 
-//    public void setEvent_id(Long event_id) {
-//        this.event_id = event_id;
-//    }
-//
-//    public Long getEvent_id() {
-//        return event_id;
-//    }
+    public Integer getFeed_id() {
+        return feed_id;
+    }
 
-    public Long getFeed_val() {
+
+    public String getFeed_val() {
         return feed_val;
     }
 
-    public void setFeed_val(Long feed_val) {
+    public void setFeed_val(String feed_val) {
         this.feed_val = feed_val;
     }
 
@@ -74,6 +59,14 @@ public class Feedback{
         this.feedback = feedback;
     }
 
+    public String getEmail_address() {
+        return email_address;
+    }
+
+    public void setEmail_address(String email_address) {
+        this.email_address = email_address;
+    }
+
     public Client getClient() {
         return client;
     }
@@ -82,24 +75,24 @@ public class Feedback{
         this.client = client;
     }
 
-    public void setEvents(Events events) {
-        this.events = events;
-    }
-
-    public Events getEvents() {
-        return events;
-    }
-
-    public Integer getId() {
-        return feed_id;
-    }
-
-
+//    public Events getEvents() {
+//        return events;
+//    }
+//
+//    public void setEvents(Events events) {
+//        this.events = events;
+//    }
 
     @Override
     public String toString() {
-        return "feedback [  feed_val=" +feed_val + ",feedback=" +feedback + ",feed_id="+feed_id +",client = "+ client+",events="+events+"]";
+        return "Feedback{" +
+                "feed_id=" + feed_id +
+                ", feed_val='" + feed_val + '\'' +
+                ", feedback='" + feedback + '\'' +
+                ", email_address='" + email_address + '\'' +
+                ", client=" + client +
+//                ", events=" + events +
+                '}';
     }
-
 
 }
