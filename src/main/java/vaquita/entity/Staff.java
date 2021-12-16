@@ -16,8 +16,7 @@ public class Staff {
     @Column
     private String s_name;
 
-//    @Column
-//    private Integer event_id;
+
 
     @Column
     private String s_address;
@@ -28,8 +27,6 @@ public class Staff {
     @Column
     private int salary;
 
-    @Column
-    private String progress;
 
     @Column
     private String s_password;
@@ -43,14 +40,13 @@ public class Staff {
 
     public Staff(){}
 
-    public Staff ( String s_name, String s_address, String field, int salary, String progress, String s_password, Events events){
+    public Staff ( String s_name, String s_address, String field, int salary, String s_password, Events events){
 
         this.s_name = s_name;
 //        this.event_id = event_id;
         this.s_address = s_address;
         this.field = field;
         this.salary = salary;
-        this.progress = progress;
         this.s_password = s_password;
         this.events = events;
     }
@@ -71,13 +67,6 @@ public class Staff {
         this.s_name = s_name;
     }
 
-//    public Integer getEvent_id() {
-//        return event_id;
-//    }
-//
-//    public void setEvent_id(Integer event_id) {
-//        this.event_id = event_id;
-//    }
 
     public String getS_address() {
         return s_address;
@@ -101,14 +90,6 @@ public class Staff {
 
     public void setSalary(int salary) {
         this.salary = salary;
-    }
-
-    public String getProgress() {
-        return progress;
-    }
-
-    public void setProgress(String progress) {
-        this.progress = progress;
     }
 
     public String getS_password() {
@@ -136,7 +117,6 @@ public class Staff {
                 ", s_address='" + s_address + '\'' +
                 ", field='" + field + '\'' +
                 ", salary='" + salary + '\'' +
-                ", progress='" + progress + '\'' +
                 ", s_password='" + s_password + '\'' +
                 ", events=" + events +
                 '}';

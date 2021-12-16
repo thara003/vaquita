@@ -111,9 +111,7 @@
                 <div class="invalid-feedback">Please provide a valid zip.</div>
             </div>
         </div>
-        <a href="client.html" class="btn btn-danger">Back</a>
-        <!-- <a href="client.html" class="btn btn-primary payment"data-toggle="modal"
-        data-target="#exampleModalCenter">Submit</a> -->
+        <a onclick="history.back()" class="btn btn-danger back">Back</a>
         <button type="submit" class="btn btn-primary payment" data-toggle="modal"
                 data-target="#exampleModalCenter">Submit
         </button>
@@ -142,22 +140,6 @@
 
     </form>
 </div>
-
-<!-- <div class="container p-4 pop-up" style="display: none;">
-  <div class="card d-flex" style="width: 18rem;">
-    <i class="fas fa-check-circle fa-3x card-img-top d-flex justify-content-center" style="color: greenyellow;"></i>
-    <div class="card-body">
-      <p class="card-text" style="color: black!important;">Your Transaction is Successful !</p>
-    </div>
-  </div>
-</div> -->
-
 </body>
-<!-- <script>
-document.querySelector(".payment").addEventListener("click",function (e){
-e.preventDefault();
-document.querySelector(".paid").style.display = "none";
-document.querySelector(".pop-up").style.display = "block";
-});
-</script> -->
+
 </html>

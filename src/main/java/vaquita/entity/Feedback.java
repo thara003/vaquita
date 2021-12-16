@@ -19,13 +19,7 @@ public class Feedback{
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "client_id")
     private Client client;
-//
-//    @ManyToOne(fetch = FetchType.LAZY)
-//    @JoinColumn(name = "event_id")
-//    private Events events;
-//     @OneToOne(fetch = FetchType.LAZY)
-//     @JoinColumn(name = "event_id")
-//     private Events events;
+
 
     public Feedback() {
     }
@@ -75,13 +69,7 @@ public class Feedback{
         this.client = client;
     }
 
-//    public Events getEvents() {
-//        return events;
-//    }
-//
-//    public void setEvents(Events events) {
-//        this.events = events;
-//    }
+
 
     @Override
     public String toString() {

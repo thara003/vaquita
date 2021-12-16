@@ -8,14 +8,7 @@ public class Manager {
     @GeneratedValue
     private Integer man_id;
 
-//    @Column
-//    private Long c_id;
-//
-//    @Column
-//    private Long s_id;
-//
-//    @Column
-//    private Long event_id;
+
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "client_id")
@@ -36,9 +29,7 @@ public class Manager {
         this.events = events;
         this.staff = staff;
 
-//        this.c_id = c_id;
-//        this.event_id = event_id;
-//        this.s_id = s_id;
+
     }
 
     public void setClient(Client client) {
@@ -71,29 +62,6 @@ public class Manager {
 
 
 
-    //    public Long getEvent_id() {
-//        return event_id;
-//    }
-//
-//    public void setEvent_id(Long event_id) {
-//        this.event_id = event_id;
-//    }
-//
-//    public Long getC_id() {
-//        return c_id;
-//    }
-//
-//    public void setC_id(Long c_id) {
-//        this.c_id = c_id;
-//    }
-//
-//    public void setS_id(Long s_id) {
-//        this.s_id = s_id;
-//    }
-//
-//    public Long getS_id() {
-//        return s_id;
-//    }
         @Override
     public String toString (){
         return "Manager [ client=" +client +",events"+events+",staff="+staff+",man_id="+ man_id + "]";

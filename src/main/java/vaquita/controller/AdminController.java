@@ -26,6 +26,9 @@ public class AdminController {
     @Autowired
     private AdminService adminService;
 
+    @Autowired
+    private FeedbackService feedbackService;
+
 
     @GetMapping("/{id}")
     public String showAdmin(@PathVariable("id") int id, Model model)
@@ -42,6 +45,9 @@ public class AdminController {
 
         List<Staff> staffList = staffService.getAllStaff();
         model.addAttribute("staffList", staffList);
+
+        List<Feedback> feedbacks = feedbackService.getAllFeedback();
+        model.addAttribute("feedbacksList", feedbacks);
 
         return "admin";
     }

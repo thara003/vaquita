@@ -38,8 +38,7 @@ public class Events {
     @Column
     private String status;
 
-    @Column
-    private String staffs;
+
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "client_id")
@@ -59,7 +58,7 @@ public class Events {
 
     public Events(){}
 
-    public Events ( String event_name, String subevent, String event_date, String priority, String destination, String dest_city, int dest_zip, String status, String staffs,Client client){
+    public Events ( String event_name, String subevent, String event_date, String priority, String destination, String dest_city, int dest_zip, String status, Client client){
         this.event_name = event_name;
         this.subevent = subevent;
         this.event_date = event_date;
@@ -68,7 +67,6 @@ public class Events {
         this.dest_city = dest_city;
         this.dest_zip = dest_zip;
         this.status = status;
-        this.staffs = staffs;
         this.client = client;
     }
     public int getId() {
@@ -132,13 +130,6 @@ public class Events {
         this.dest_zip = dest_zip;
     }
 
-    public String getStaffs() {
-        return staffs;
-    }
-
-    public void setStaffs(String staffs) {
-        this.staffs = staffs;
-    }
 
     public String getStatus() {
         return status;
@@ -218,6 +209,6 @@ public class Events {
 
     @Override
     public String toString() {
-        return "Events{" + "event_id=" + event_id + ", event_name=" + event_name + ", subevent=" + subevent + ", event_date=" + event_date + ", priority=" + priority + ", destination=" + destination + ", dest_city=" + dest_city + ", dest_zip=" + dest_zip + ", status=" + status + ", staffs=" + staffs + ", client=" + client + ", listStaff=" + listStaff + ", listManager=" + listManager + ", listBilling=" + listBilling + ", listUserrequest=" + listUserrequest + '}';
+        return "Events{" + "event_id=" + event_id + ", event_name=" + event_name + ", subevent=" + subevent + ", event_date=" + event_date + ", priority=" + priority + ", destination=" + destination + ", dest_city=" + dest_city + ", dest_zip=" + dest_zip + ", status=" + status +  ", client=" + client + ", listStaff=" + listStaff + ", listManager=" + listManager + ", listBilling=" + listBilling + ", listUserrequest=" + listUserrequest + '}';
     }
 }

@@ -22,14 +22,14 @@ public class Client {
     @Column
     private String c_mail;
 
-    @Column(length = 10)
-    private int c_contact;
-    @Column
-    private String c_address;
-    @Column
-    private String c_city;
-    @Column(length = 6)
-    private Integer c_zip;
+    @Column(length = 11)
+    private Long c_contact;
+//    @Column
+//    private String c_address;
+//    @Column
+//    private String c_city;
+//    @Column(length = 6)
+//    private Integer c_zip;
     @Column
     private String c_username;
     @Column
@@ -44,13 +44,10 @@ public class Client {
     public Client() {
     }
 
-    public Client(String c_name, String c_mail, int c_contact, String c_address, String c_city, Integer c_zip, String c_username, String c_password) {
+    public Client(String c_name, String c_mail, Long c_contact, String c_username, String c_password) {
         this.c_name = c_name;
         this.c_mail = c_mail;
         this.c_contact = c_contact;
-        this.c_address = c_address;
-        this.c_city = c_city;
-        this.c_zip = c_zip;
         this.c_username = c_username;
         this.c_password = c_password;
     }
@@ -75,37 +72,37 @@ public class Client {
         this.c_mail = c_mail;
     }
 
-    public int getC_contact() {
+    public Long getC_contact() {
         return c_contact;
     }
 
-    public void setC_contact(int c_contact) {
+    public void setC_contact(Long c_contact) {
         this.c_contact = c_contact;
     }
 
-    public String getC_address() {
-        return c_address;
-    }
-
-    public void setC_address(String c_address) {
-        this.c_address = c_address;
-    }
-
-    public String getC_city() {
-        return c_city;
-    }
-
-    public void setC_city(String c_city) {
-        this.c_city = c_city;
-    }
-
-    public Integer getC_zip() {
-        return c_zip;
-    }
-
-    public void setC_zip(Integer c_zip) {
-        this.c_zip = c_zip;
-    }
+//    public String getC_address() {
+//        return c_address;
+//    }
+//
+//    public void setC_address(String c_address) {
+//        this.c_address = c_address;
+//    }
+//
+//    public String getC_city() {
+//        return c_city;
+//    }
+//
+//    public void setC_city(String c_city) {
+//        this.c_city = c_city;
+//    }
+//
+//    public Integer getC_zip() {
+//        return c_zip;
+//    }
+//
+//    public void setC_zip(Integer c_zip) {
+//        this.c_zip = c_zip;
+//    }
 
     public String getC_username() {
         return c_username;
@@ -159,7 +156,7 @@ public class Client {
 
     @Override
     public String toString() {
-        return "Client{" + "c_id=" + c_id + ", c_name=" + c_name + ", c_mail=" + c_mail + ", c_contact=" + c_contact + ", c_address=" + c_address + ", c_city=" + c_city + ", c_zip=" + c_zip + ", c_username=" + c_username + ", c_password=" + c_password + '}';
+        return "Client{" + "c_id=" + c_id + ", c_name=" + c_name + ", c_mail=" + c_mail + ", c_contact=" + c_contact + ", c_username=" + c_username + ", c_password=" + c_password + '}';
     }
 
 }

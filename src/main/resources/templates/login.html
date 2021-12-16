@@ -28,9 +28,9 @@
         <div class="m-4 p-4">
             <form action="">
                 <div class="form-group">
-                    <label for="exampleFormControlSelect1">Login type</label>
+                    <label for="FormControlSelect">Login type</label>
                     <br />
-                    <select class="select" id="exampleFormControlSelect"
+                    <select class="select" id="FormControlSelect"
                         style="width: 100%; padding: 5px; border: 1px solid #ced4da">
                         <option value="">Select role</option>
                         <option value="admin">ADMIN</option>
@@ -39,8 +39,8 @@
                     </select>
                 </div>
                 <div class="mb-3">
-                    <label class="form-label" for="inputEmail">Username</label>
-                    <input type="text" class="form-control" id="inputEmail" placeholder="Username" required />
+                    <label class="form-label" for="inputUsername">Username</label>
+                    <input type="text" class="form-control" id="inputUsername" placeholder="Username" required />
                 </div>
                 <div class="mb-3">
                     <label class="form-label" for="inputPassword">Password</label>
@@ -52,7 +52,7 @@
                         <label class="form-check-label" for="checkRemember">Remember me</label>
                     </div>
                 </div>
-                <button type="submit" class="btn btn-primary" id="sign-in-btn">
+                <button type="submit" class="btn btn-primary sign-in-btn" id="sign-in-btn">
                     Sign in
                 </button>
             </form>
@@ -61,26 +61,71 @@
 
     <script>
         // redirect form based on user selection
-        document.getElementById("sign-in-btn").addEventListener("click", function(e) {
+        // document.getElementById("sign-in-btn").addEventListener("click", function(e) {
+        //     e.preventDefault();
+        //     if (
+        //         document.getElementById("exampleFormControlSelect").value ==
+        //         "admin"
+        //     ) {
+        //         window.location.href = "admin.html";
+        //     }
+        //     if (
+        //         document.getElementById("exampleFormControlSelect").value ==
+        //         "client"
+        //     ) {
+        //         window.location.href = "client.html";
+        //     }
+        //     if (
+        //         (document.getElementById("exampleFormControlSelect").value) ==
+        //         "manager"
+        //     ) {
+        //         window.location.href = "manager.html";
+        //     }
+        // });
+        document.querySelector(".sign-in-btn").addEventListener("click", function (e) {
             e.preventDefault();
-            if (
-                document.getElementById("exampleFormControlSelect").value ==
-                "admin"
-            ) {
-                window.location.href = "admin.html";
+
+            let userType = document.getElementById("FormControlSelect").value;
+            let username = document.getElementById("inputUsername").value;
+            let password = document.getElementById("inputPassword").value;
+
+            if (userType === "") {
+                alert("Please select user type");
+                return;
             }
-            if (
-                document.getElementById("exampleFormControlSelect").value ==
-                "client"
-            ) {
-                window.location.href = "client.html";
+
+            if (userType === "client") {
+                if ((username === "robert123" && password === "robertpass")) {
+                    window.location.href = "/clients/1";
+                } else if (username === "jane123" && password === "dummypassword") {
+                    window.location.href = "/clients/2";
+                } else if (username === "jack123" && password === "helloworld@123") {
+                    window.location.href = "/clients/3";
+                } else if (username === "jill123" && password === "password123") {
+                    window.location.href = "/clients/4";
+                } else {
+                    alert("Invalid username or password");
+                }
             }
-            if (
-                (document.getElementById("exampleFormControlSelect").value) ==
-                "manager"
-            ) {
-                window.location.href = "manager.html";
+
+            if (userType === "manager") {
+                if ((username === "manager" && password === "password")) {
+                    window.location.href = "/manager/6";
+                }
+                else {
+                    alert("Invalid username or password");
+                }
             }
+
+            if (userType === "admin") {
+                if ((username === "admin" && password === "admin")) {
+                    window.location.href = "/admin/8";
+                }  else {
+                    alert("Invalid username or password");
+                }
+            }
+
+
         });
     </script>
 </body>

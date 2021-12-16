@@ -5,7 +5,7 @@
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Dashboard-Clnt</title>
+  <title>Client Dashboard</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
     integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
@@ -24,15 +24,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=MuseoModerno:wght@100&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="	https://use.fontawesome.com/releases/v5.7.2/css/all.css" />
-  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-    crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-    crossorigin="anonymous"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-    crossorigin="anonymous"></script>
+
 
   <style>
     body {
@@ -58,7 +50,6 @@
 
     .card:hover {
       border-color: chartreuse;
-      /* border: 2px; */
       box-shadow: 0 8px 7px lightgrey;
     }
   </style>
@@ -74,7 +65,7 @@
         <a href="/home" class="btn btn-warning">Logout</a>
       </div>
     </div>
-    <!--      <p class="h4 mb-4" th:text="'Course : ' + ${client.name}" />-->
+
 
     <div class="row" style="margin-top: 20px">
       <div class="col-sm-3">
@@ -100,7 +91,7 @@
           <div class="card-body">
             <h5 class="card-title">Payment Gateway</h5>
 
-            <a href="payment.html" class="btn btn-primary">Pay</a>
+            <a href="/clients/payment" class="btn btn-primary">Pay</a>
           </div>
         </div>
       </div>
@@ -132,12 +123,12 @@
         <tbody th:each="temp : ${listEvents}">
           <tr>
 
-            <td th:text="${temp.event_name}" />
-            <td th:text="${temp.subevent}" />
-            <td th:text="${temp.priority}" />
-            <td th:text="${temp.destination}" />
-            <td th:text="${temp.event_date}" />
-            <td th:text="${temp.status}" />
+            <td th:text="${temp?.event_name}" />
+            <td th:text="${temp?.subevent}" />
+            <td th:text="${temp?.priority}" />
+            <td th:text="${temp?.destination}" />
+            <td th:text="${temp?.event_date}" />
+            <td th:text="${temp?.status}" />
 
             <td>
               <a th:href="@{'/clients/deleteEvents?eid='+${temp.id}+'&cid='+${id}}"
@@ -156,7 +147,7 @@
       <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content bg-dark" style="color: whitesmoke;" >
           <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLongTitle">Feedback Form</h5>
+            <h5 class="modal-title" id="exampleModalLongTitle"> Form</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
@@ -274,9 +265,7 @@
                   " />
 
                 <div class="mb-3">
-                  <!-- <label for="exampleFormControlTextarea1" class="form-label" style="text-align: center;"
-                    >Please leave your feedback below.</label
-                  > -->
+
                   <p class="text-center">Please leave your feedback below.</p>
                   <label for="exampleFormControlTextarea1"></label>
                   <input class="form-control" th:field="*{feedback}" id="exampleFormControlTextarea1" rows="3">
@@ -312,7 +301,7 @@
 
 
 
-    <div class="container p-4 booking border border-primary" style="width: 500px ; display: none; ">
+    <div class="container p-4 booking border border-primary add-event-form" style="width: 500px ; display: none; ">
       <h4 class="text-center">Booking</h4>
       <form action="#" method="post" th:action="@{'/clients/save?id='+${id}}" th:object="${theEvent}">
         <div class="form-group mb-3">
@@ -359,7 +348,7 @@
             id="exampleFormControlInput1 validationServer01" placeholder="address line-1" />
         </div>
 
-        <a href="client.html" class="btn btn-danger">Close</a>
+        <a href="#" class="btn btn-danger close-event">Close</a>
         <button type="submit" class="btn btn-primary">Submit</button>
 
       </form>
@@ -389,6 +378,10 @@
       $("#rating").val(rating);
       console.log(rating);
     });
+  });
+  document.querySelector(".close-event").addEventListener("click",function (e){
+    e.preventDefault();
+    document.querySelector(".add-event-form").style.display = "none";
   });
 
 
