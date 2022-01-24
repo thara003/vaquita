@@ -60,28 +60,7 @@
     </div>
 
     <script>
-        // redirect form based on user selection
-        // document.getElementById("sign-in-btn").addEventListener("click", function(e) {
-        //     e.preventDefault();
-        //     if (
-        //         document.getElementById("exampleFormControlSelect").value ==
-        //         "admin"
-        //     ) {
-        //         window.location.href = "admin.html";
-        //     }
-        //     if (
-        //         document.getElementById("exampleFormControlSelect").value ==
-        //         "client"
-        //     ) {
-        //         window.location.href = "client.html";
-        //     }
-        //     if (
-        //         (document.getElementById("exampleFormControlSelect").value) ==
-        //         "manager"
-        //     ) {
-        //         window.location.href = "manager.html";
-        //     }
-        // });
+        
         document.querySelector(".sign-in-btn").addEventListener("click", function (e) {
             e.preventDefault();
 
@@ -97,11 +76,11 @@
             if (userType === "client") {
                 if ((username === "robert123" && password === "robertpass")) {
                     window.location.href = "/clients/1";
-                } else if (username === "jane123" && password === "dummypassword") {
+                } else if (username === "archit23" && password === "architpass") {
                     window.location.href = "/clients/2";
-                } else if (username === "jack123" && password === "helloworld@123") {
+                } else if (username === "anantha123" && password === "ananthapass") {
                     window.location.href = "/clients/3";
-                } else if (username === "jill123" && password === "password123") {
+                } else if (username === "nayan123" && password === "nayanpass") {
                     window.location.href = "/clients/4";
                 } else {
                     alert("Invalid username or password");
